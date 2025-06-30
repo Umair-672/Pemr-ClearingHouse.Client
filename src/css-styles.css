@@ -19,6 +19,7 @@
   box-sizing: border-box;
 }
 
+
 .fixed-sidebar {
   position: fixed;
   top: 56px; /* header height */

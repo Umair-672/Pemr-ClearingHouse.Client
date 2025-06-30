@@ -1,0 +1,209 @@
+<!-- <div class="organization-form-add">
+  <h2>Add New Organization</h2>
+  <form [formGroup]="organizationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="orgName">Organization Name</label>
+      <input
+        id="orgName"
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter organization name"
+        required
+      />
+      <div *ngIf="organizationForm.get('name')?.invalid && organizationForm.get('name')?.touched" class="text-danger">
+        Organization name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="orgEmail">Email</label>
+      <input
+        id="orgEmail"
+        type="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Enter organization email"
+        required
+      />
+      <div *ngIf="organizationForm.get('email')?.invalid && organizationForm.get('email')?.touched" class="text-danger">
+        Valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="orgPhone">Phone</label>
+      <input
+        id="orgPhone"
+        type="tel"
+        class="form-control"
+        formControlName="phone"
+        placeholder="Enter phone number"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="orgAddress">Address</label>
+      <textarea
+        id="orgAddress"
+        class="form-control"
+        formControlName="address"
+        placeholder="Enter address"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="organizationForm.invalid">
+      Add Organization
+    </button>
+  </form> -->
+<!-- <div class="organization-form-add d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="min-width: 400px; max-width: 500px; width: 100%;">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4 text-primary fw-bold">
+        <i class="bi bi-building"></i> Add New Organization
+      </h2>
+      <form [formGroup]="organizationForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="mb-3">
+          <label for="orgName" class="form-label fw-semibold">Organization Name</label>
+          <input
+            id="orgName"
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="name"
+            placeholder="Enter organization name"
+            required
+            [ngClass]="{'is-invalid': organizationForm.get('name')?.invalid && organizationForm.get('name')?.touched}"
+          />
+          <div *ngIf="organizationForm.get('name')?.invalid && organizationForm.get('name')?.touched" class="invalid-feedback">
+            Organization name is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="orgEmail" class="form-label fw-semibold">Email</label>
+          <input
+            id="orgEmail"
+            type="email"
+            class="form-control form-control-lg"
+            formControlName="email"
+            placeholder="Enter organization email"
+            required
+            [ngClass]="{'is-invalid': organizationForm.get('email')?.invalid && organizationForm.get('email')?.touched}"
+          />
+          <div *ngIf="organizationForm.get('email')?.invalid && organizationForm.get('email')?.touched" class="invalid-feedback">
+            Valid email is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="orgPhone" class="form-label fw-semibold">Phone</label>
+          <input
+            id="orgPhone"
+            type="tel"
+            class="form-control form-control-lg"
+            formControlName="phone"
+            placeholder="Enter phone number"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="orgAddress" class="form-label fw-semibold">Address</label>
+          <textarea
+            id="orgAddress"
+            class="form-control form-control-lg"
+            formControlName="address"
+            placeholder="Enter address"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg" [disabled]="organizationForm.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add Organization
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-building"></i> Add New Organization
+      </h2>
+      <form [formGroup]="organizationForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Organization Name -->
+        <div class="form-group mb-3">
+          <label for="orgName" class="fw-semibold">Organization Name</label>
+          <input
+            id="orgName"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Enter organization name"
+            required
+            [ngClass]="{'is-invalid': organizationForm.get('name')?.invalid && organizationForm.get('name')?.touched}"
+          />
+          <div *ngIf="organizationForm.get('name')?.invalid && organizationForm.get('name')?.touched" class="invalid-feedback">
+            Organization name is required.
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group mb-3">
+          <label for="orgEmail" class="fw-semibold">Email</label>
+          <input
+            id="orgEmail"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Enter organization email"
+            [ngClass]="{'is-invalid': organizationForm.get('email')?.invalid && organizationForm.get('email')?.touched}"
+          />
+          <div *ngIf="organizationForm.get('email')?.invalid && organizationForm.get('email')?.touched" class="invalid-feedback">
+            Valid email is required.
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group mb-3">
+          <label for="orgPhone" class="fw-semibold">Phone</label>
+          <input
+            id="orgPhone"
+            type="tel"
+            class="form-control"
+            formControlName="phone"
+            placeholder="Enter phone number"
+          />
+        </div>
+
+        <!-- Address -->
+        <div class="form-group mb-3">
+          <label for="orgAddress" class="fw-semibold">Address</label>
+          <textarea
+            id="orgAddress"
+            class="form-control"
+            formControlName="address"
+            placeholder="Enter address"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- isActive -->
+        <div class="form-check mb-4">
+          <input
+            id="orgIsActive"
+            type="checkbox"
+            class="form-check-input"
+            formControlName="isActive"
+          />
+          <label for="orgIsActive" class="form-check-label fw-semibold">Active</label>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="organizationForm.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add Organization
+          </button>
+        </div>

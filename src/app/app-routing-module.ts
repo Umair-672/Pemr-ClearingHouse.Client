@@ -12,6 +12,13 @@ const routes: Routes = [
    loadChildren: () => import('./features/dashboard/dashboard-module').then(m => m.DashboardModule),
    canActivate: [AuthGuard]
   },
+  {path: 'payer',
+   loadChildren: () => import('./features/payer/payer-module').then(m => m.PayerModule),
+   canActivate: [AuthGuard]
+  },
+  {path: 'gateway',
+   loadChildren: () => import('./features/gateway/gateway-module/gateway-module').then(m => m.GatewayModule)
+  },
 ];
 
 @NgModule({

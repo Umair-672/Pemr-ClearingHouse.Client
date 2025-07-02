@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import * as feather from 'feather-icons';
+
 
 @Component({
   selector: 'app-side-panel',
@@ -7,8 +7,5 @@ import * as feather from 'feather-icons';
   templateUrl: './side-panel.html',
   styleUrl: './side-panel.scss'
 })
-export class SidePanel implements AfterViewInit {
-  ngAfterViewInit() {
-    feather.replace();
-  }
+export class SidePanel {
 }

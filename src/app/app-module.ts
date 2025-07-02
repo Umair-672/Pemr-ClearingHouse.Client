@@ -11,13 +11,14 @@ import { Footer } from './layout/footer/footer';
 import { SidePanel } from './layout/side-panel/side-panel';
 import { NavigatioBar } from './layout/header/navigatio-bar/navigatio-bar';
 
+
 @NgModule({
   declarations: [
     App,
     Header,
     Footer,
     SidePanel,
-    NavigatioBar
+    NavigatioBar,
   ],
   imports: [
     BrowserModule,

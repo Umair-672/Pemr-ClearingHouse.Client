@@ -16,13 +16,13 @@
             id="orgName"
             type="text"
             class="form-control"
-            formControlName="name"
+            formControlName="organizationName"
             placeholder="Enter organization name"
             required
-            [ngClass]="{'is-invalid': organizationForm.get('name')?.invalid && organizationForm.get('name')?.touched}"
+            [ngClass]="{'is-invalid': organizationForm.get('organizationName')?.invalid && organizationForm.get('organizationName')?.touched}"
           />
           <div
-            *ngIf="organizationForm.get('name')?.invalid && organizationForm.get('name')?.touched"
+            *ngIf="organizationForm.get('organizationName')?.invalid && organizationForm.get('organizationName')?.touched"
             class="invalid-feedback"
           >
             Organization name is required.

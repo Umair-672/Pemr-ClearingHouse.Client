@@ -25,7 +25,7 @@ export class OrganizationFormEditComponent implements OnInit {
   ngOnInit(): void {
     this.organizationId = this.route.snapshot.paramMap.get('id') || '';
     this.organizationForm = this.fb.group({
-      name: ['', Validators.required],
+      organizationName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
       address: [''],

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, UrlTree } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { authConfig } from '../configs/oidc-auth.config';
-import { Observable, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, from, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,22 +13,24 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private oauthService: OAuthService
-  ) {
-    this.oauthService.configure(authConfig);
-  }
+  ) {}
 
   canActivate(): Observable<boolean | UrlTree> {
     // Only load discovery document and try login once
+    debugger;
     if (!this.discoveryLoaded) {
       this.discoveryLoaded = true;
-      return from(this.oauthService.loadDiscoveryDocumentAndTryLogin()).pipe(
-        map(() => this.checkAccess())
-      );
+
+      if (this.oauthService.hasValidAccessToken()) {
+        return of(this.checkAccess());
+      } else {
+        return from(this.oauthService.loadDiscoveryDocumentAndTryLogin()).pipe(
+          map(() => this.checkAccess()),
+          catchError(() => of(this.router.parseUrl('/login'))) // Redirect to login on error
+        );
+      }
     }
-    return new Observable<boolean | UrlTree>(observer => {
-      observer.next(this.checkAccess());
-      observer.complete();
-    });
+    return of(this.checkAccess());
   }
 
   private checkAccess(): boolean | UrlTree {

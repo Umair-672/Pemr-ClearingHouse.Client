@@ -7,7 +7,7 @@ import { IOrganization } from '../model/organization.model';
   providedIn: 'root'
 })
 export class OrganizationService {
-  private baseUrl = 'http://localhost:5025/api/organizations';
+  private baseUrl = 'http://localhost:5025/api/Organizations';
 
   constructor(private http: HttpClient) {}
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
+import { authConfig } from '../../configs/oidc-auth.config';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,6 @@ export class Header {
 
   logout() {
     this.oauthService.logOut();
-    this.router.navigate(['/dashboard']);
   }
 
   get isAuthenticated(): boolean {

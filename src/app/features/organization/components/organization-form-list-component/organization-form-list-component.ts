@@ -29,7 +29,7 @@ export class OrganizationFormListComponent implements OnInit {
 }
 
   AddOrganization() {
-    this.selectedOrg = { name: '', email: '', isActive: true };
+    this.selectedOrg = { organizationName: '', email: '', isActive: true };
     this.isEdit = false;
     this.showModal = true;
   }

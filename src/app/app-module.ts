@@ -1,5 +1,6 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {withInterceptors } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing-module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,6 +11,8 @@ import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { SidePanel } from './layout/side-panel/side-panel';
 import { NavigatioBar } from './layout/header/navigatio-bar/navigatio-bar';
+import { httpAuthInterceptor } from './core/http-auth.interceptor';
+import { Auth } from './auth/auth';
 
 
 @NgModule({
@@ -19,6 +22,7 @@ import { NavigatioBar } from './layout/header/navigatio-bar/navigatio-bar';
     Footer,
     SidePanel,
     NavigatioBar,
+    Auth
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { NavigatioBar } from './layout/header/navigatio-bar/navigatio-bar';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient()
+    provideHttpClient(
+      withInterceptors([httpAuthInterceptor])
+    ),
   ],
   bootstrap: [App]
 })

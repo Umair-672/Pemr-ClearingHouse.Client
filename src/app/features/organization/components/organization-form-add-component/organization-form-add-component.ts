@@ -22,7 +22,7 @@ export class OrganizationFormAddComponent {
 
   ngOnInit(): void{
     this.organizationForm = this.fb.group({
-      name: ['', Validators.required],
+      organizationName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
       address: [''],

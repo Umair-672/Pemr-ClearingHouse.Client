@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Dashboard } from './dashboard';
+import { AuthGuard } from '../../guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: Dashboard}
+  {
+    path: '',
+    component: Dashboard
+  }
 ];
 
 @NgModule({

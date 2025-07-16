@@ -1,6 +1,7 @@
+import { Organization } from './../organization';
 export interface IOrganization {
   id?: string;
-  name: string;
+  organizationName: string;
   address?: string;
   email: string;
   phone?: string;

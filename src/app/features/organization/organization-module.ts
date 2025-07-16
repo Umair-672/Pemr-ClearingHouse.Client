@@ -7,6 +7,7 @@ import { OrganizationFormEditComponent } from './components/organization-form-ed
 import { OrganizationFormListComponent } from './components/organization-form-list-component/organization-form-list-component';
 import { OrganizationDeleteDialog } from './dialogs/organization-delete-dialog/organization-delete-dialog';
 import { OrganizationRoutingModule } from './organization-routing-module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({

@@ -9,7 +9,8 @@ const routes: Routes = [
    loadChildren: () => import('./features/organization/organization-module').then(m => m.OrganizationModule)
   },
   {path: 'dashboard',
-   loadChildren: () => import('./features/dashboard/dashboard-module').then(m => m.DashboardModule)
+   loadChildren: () => import('./features/dashboard/dashboard-module').then(m => m.DashboardModule),
+   canActivate: [AuthGuard]
   },
   {path: 'payer',
    loadChildren: () => import('./features/payer/payer-module').then(m => m.PayerModule)

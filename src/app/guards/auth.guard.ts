@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): Observable<boolean | UrlTree> {
     // Only load discovery document and try login once
-    debugger;
     if (!this.discoveryLoaded) {
       this.discoveryLoaded = true;
 

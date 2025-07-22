@@ -6,6 +6,6 @@ import { BaseApiService } from '../../../shared/services/base-api.service';
 @Injectable({ providedIn: 'root' })
 export class SubscriberService extends BaseApiService<Subscriber> {
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:5025/api/subscribers');
+    super(http, 'http://localhost:5025/api/Subscriber');
   }
-} 
+}

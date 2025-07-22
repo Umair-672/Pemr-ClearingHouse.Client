@@ -1,0 +1,220 @@
+<div class="container py-4">
+  <div class="row justify-content">
+    <div class="col-md-10 col-lg-8">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-pencil-square"></i> Edit Inbound Transaction
+      </h2>
+
+      <!-- <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div> -->
+
+      <form [formGroup]="inboundTransactionForm" (ngSubmit)="onSubmit()" autocomplete="off" *ngIf="!loading">
+        <!-- Inbound Claim File -->
+        <div class="form-group mb-3">
+          <label for="inboundClaimFileID" class="fw-semibold mb-1">Inbound Claim File</label>
+          <select
+            id="inboundClaimFileID"
+            class="form-select"
+            formControlName="inboundClaimFileID"
+            required
+            [ngClass]="{'is-invalid': inboundTransactionForm.get('inboundClaimFileID')?.invalid && inboundTransactionForm.get('inboundClaimFileID')?.touched}"
+          >
+            <option value="" disabled>Select inbound claim file</option>
+            @for (file of inboundClaimFiles; track file.name) {
+              <option [value]="file.name">{{ file.name }}</option>
+            }
+          </select>
+          <div *ngIf="inboundTransactionForm.get('inboundClaimFileID')?.invalid && inboundTransactionForm.get('inboundClaimFileID')?.touched" class="invalid-feedback">
+            Inbound claim file is required.
+          </div>
+        </div>
+
+        <!-- Control Number -->
+        <div class="form-group mb-3">
+          <label for="ctrlNo" class="fw-semibold mb-1">Control Number</label>
+          <input
+            id="ctrlNo"
+            type="text"
+            class="form-control"
+            formControlName="ctrlNo"
+            placeholder="Enter control number"
+            required
+            [ngClass]="{'is-invalid': inboundTransactionForm.get('ctrlNo')?.invalid && inboundTransactionForm.get('ctrlNo')?.touched}"
+          />
+          <div *ngIf="inboundTransactionForm.get('ctrlNo')?.invalid && inboundTransactionForm.get('ctrlNo')?.touched" class="invalid-feedback">
+            Control number is required.
+          </div>
+        </div>
+
+        <!-- Version Name -->
+        <div class="form-group mb-3">
+          <label for="versionName" class="fw-semibold mb-1">Version Name</label>
+          <input
+            id="versionName"
+            type="text"
+            class="form-control"
+            formControlName="versionName"
+            placeholder="Enter version name"
+            required
+            [ngClass]="{'is-invalid': inboundTransactionForm.get('versionName')?.invalid && inboundTransactionForm.get('versionName')?.touched}"
+          />
+          <div *ngIf="inboundTransactionForm.get('versionName')?.invalid && inboundTransactionForm.get('versionName')?.touched" class="invalid-feedback">
+            Version name is required.
+          </div>
+        </div>
+
+        <!-- Submitter Entity Type -->
+        <div class="form-group mb-3">
+          <label for="submitterEntityType" class="fw-semibold mb-1">Submitter Entity Type</label>
+          <input
+            id="submitterEntityType"
+            type="text"
+            class="form-control"
+            formControlName="submitterEntityType"
+            placeholder="Enter submitter entity type"
+            required
+            [ngClass]="{'is-invalid': inboundTransactionForm.get('submitterEntityType')?.invalid && inboundTransactionForm.get('submitterEntityType')?.touched}"
+          />
+          <div *ngIf="inboundTransactionForm.get('submitterEntityType')?.invalid && inboundTransactionForm.get('submitterEntityType')?.touched" class="invalid-feedback">
+            Submitter entity type is required.
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Submitter First Name -->
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="submitterFirstName" class="fw-semibold mb-1">Submitter First Name</label>
+              <input
+                id="submitterFirstName"
+                type="text"
+                class="form-control"
+                formControlName="submitterFirstName"
+                placeholder="Enter first name"
+                required
+                [ngClass]="{'is-invalid': inboundTransactionForm.get('submitterFirstName')?.invalid && inboundTransactionForm.get('submitterFirstName')?.touched}"
+              />
+              <div *ngIf="inboundTransactionForm.get('submitterFirstName')?.invalid && inboundTransactionForm.get('submitterFirstName')?.touched" class="invalid-feedback">
+                First name is required.
+              </div>
+            </div>
+          </div>
+
+          <!-- Submitter Last Name -->
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="submitterLastName" class="fw-semibold mb-1">Submitter Last Name</label>
+              <input
+                id="submitterLastName"
+                type="text"
+                class="form-control"
+                formControlName="submitterLastName"
+                placeholder="Enter last name"
+                required
+                [ngClass]="{'is-invalid': inboundTransactionForm.get('submitterLastName')?.invalid && inboundTransactionForm.get('submitterLastName')?.touched}"
+              />
+              <div *ngIf="inboundTransactionForm.get('submitterLastName')?.invalid && inboundTransactionForm.get('submitterLastName')?.touched" class="invalid-feedback">
+                Last name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submitter Identification Code -->
+        <div class="form-group mb-3">
+          <label for="submitterIdentificationCode" class="fw-semibold mb-1">Submitter Identification Code</label>
+          <input
+            id="submitterIdentificationCode"
+            type="text"
+            class="form-control"
+            formControlName="submitterIdentificationCode"
+            placeholder="Enter identification code"
+            required
+            [ngClass]="{'is-invalid': inboundTransactionForm.get('submitterIdentificationCode')?.invalid && inboundTransactionForm.get('submitterIdentificationCode')?.touched}"
+          />
+          <div *ngIf="inboundTransactionForm.get('submitterIdentificationCode')?.invalid && inboundTransactionForm.get('submitterIdentificationCode')?.touched" class="invalid-feedback">
+            Identification code is required.
+          </div>
+        </div>
+
+        <!-- Submitter Contact Name -->
+        <div class="form-group mb-3">
+          <label for="submitterContactName" class="fw-semibold mb-1">Submitter Contact Name</label>
+          <input
+            id="submitterContactName"
+            type="text"
+            class="form-control"
+            formControlName="submitterContactName"
+            placeholder="Enter contact name"
+            required
+            [ngClass]="{'is-invalid': inboundTransactionForm.get('submitterContactName')?.invalid && inboundTransactionForm.get('submitterContactName')?.touched}"
+          />
+          <div *ngIf="inboundTransactionForm.get('submitterContactName')?.invalid && inboundTransactionForm.get('submitterContactName')?.touched" class="invalid-feedback">
+            Contact name is required.
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Submitter Phone -->
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="submitterPhoneNo" class="fw-semibold mb-1">Submitter Phone</label>
+              <input
+                id="submitterPhoneNo"
+                type="tel"
+                class="form-control"
+                formControlName="submitterPhoneNo"
+                placeholder="Enter phone number"
+                required
+                [ngClass]="{'is-invalid': inboundTransactionForm.get('submitterPhoneNo')?.invalid && inboundTransactionForm.get('submitterPhoneNo')?.touched}"
+              />
+              <div *ngIf="inboundTransactionForm.get('submitterPhoneNo')?.invalid && inboundTransactionForm.get('submitterPhoneNo')?.touched" class="invalid-feedback">
+                Phone number is required.
+              </div>
+            </div>
+          </div>
+
+          <!-- Submitter Fax -->
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="submitterFaxNo" class="fw-semibold mb-1">Submitter Fax</label>
+              <input
+                id="submitterFaxNo"
+                type="tel"
+                class="form-control"
+                formControlName="submitterFaxNo"
+                placeholder="Enter fax number"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Submitter Email -->
+        <div class="form-group mb-3">
+          <label for="submitterEmail" class="fw-semibold mb-1">Submitter Email</label>
+          <input
+            id="submitterEmail"
+            type="email"
+            class="form-control"
+            formControlName="submitterEmail"
+            placeholder="Enter email address"
+            required
+            [ngClass]="{'is-invalid': inboundTransactionForm.get('submitterEmail')?.invalid && inboundTransactionForm.get('submitterEmail')?.touched}"
+          />
+          <div *ngIf="inboundTransactionForm.get('submitterEmail')?.invalid && inboundTransactionForm.get('submitterEmail')?.touched" class="invalid-feedback">
+            Valid email is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="inboundTransactionForm.invalid">
+            <i class="bi bi-pencil-square me-2"></i>Update Inbound Transaction
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,19 @@ const routes: Routes = [
    loadChildren: () => import('./features/payer/payer-module').then(m => m.PayerModule)
   },
   {path: 'gateway',
-   loadChildren: () => import('./features/gateway/gateway-module/gateway-module').then(m => m.GatewayModule)
+   loadChildren: () => import('./features/gateway/gateway-module').then(m => m.GatewayModule)
+  },
+  {path: 'subscriber',
+   loadChildren: () => import('./features/subscriber/subscriber-module').then(m => m.SubscriberModule)
+  },
+  {path: 'billing-provider',
+   loadChildren: () => import('./features/billing-provider/billing-provider-module').then(m => m.BillingProviderModule)
+  },
+  {path: 'inbound-claim-file',
+   loadChildren: () => import('./features/inbound-claim-file/inbound-claim-file-module').then(m => m.InboundClaimFileModule)
+  },
+  {path: 'inboundtransaction',
+   loadChildren: () => import('./features/inbound-transaction/inbound-transaction-module').then(m => m.InboundTransactionModule)
   },
 ];
 

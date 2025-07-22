@@ -1,4 +1,4 @@
-import { Subscriber } from './subscriber.model';
+import { Subscriber } from "../../subscriber/model/subscriber.model";
 
 export interface Payer {
   id?: string; // MongoDB _id, optional for new records
@@ -11,4 +11,4 @@ export interface Payer {
   state: string;
   zipCode: string;
   subscriber?: Subscriber;
-} 
+}

@@ -1,17 +1,18 @@
-<nav
-  id="sidebarMenu"
-  class="fixed-sidebar bg-light sidebar"
-  style="
-    height: 100vh;
-    top: 56px;
-    position: fixed;
-    left: 0;
-    width: 220px;
-    z-index: 1030;
-  "
->
-  <div class="position-sticky pt-3">
-    <ul class="nav flex-column">
+<div>
+  <div
+    class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary custom-sidebar"
+  >
+    <a
+      href="/"
+      class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+    >
+      <svg class="bi pe-none me-2" width="40" height="32" aria-hidden="true">
+        <use xlink:href="#bootstrap"></use>
+      </svg>
+      <span class="fs-4">Pemr</span>
+    </a>
+    <hr />
+    <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
         <a
           class="nav-link d-flex align-items-center"
@@ -19,7 +20,7 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <i class="bi bi-house-door"></i>
+          <i class="bi bi-speedometer2"></i>
           <span class="ms-2">Dashboard</span>
         </a>
       </li>
@@ -30,7 +31,7 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <i class="bi bi-briefcase"></i>
+          <i class="bi bi-building"></i>
           <span class="ms-2">Organizations</span>
         </a>
       </li>
@@ -41,7 +42,7 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <i class="bi bi-cash-stack"></i>
+          <i class="bi bi-credit-card"></i>
           <span class="ms-2">Payers</span>
         </a>
       </li>
@@ -52,75 +53,118 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <i class="bi bi-hdd-network"></i>
+          <i class="bi bi-diagram-3"></i>
           <span class="ms-2">Gateways</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-file-earmark"></i>
-          <span class="ms-2">Orders</span>
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/billing-provider'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-briefcase"></i>
+          <span class="ms-2">Billing Provider</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-cart"></i>
-          <span class="ms-2">Products</span>
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/inbound-claim-file'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-file-earmark-arrow-down"></i>
+          <span class="ms-2">Inbound Claim File</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-people"></i>
-          <span class="ms-2">Customers</span>
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/inboundtransaction'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-arrow-left-right"></i>
+          <span class="ms-2">Inbound Transaction</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-bar-chart"></i>
-          <span class="ms-2">Reports</span>
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/subscriber'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-person-badge"></i>
+          <span class="ms-2">Subscriber</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-layers"></i>
-          <span class="ms-2">Integrations</span>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <svg
+            class="bi pe-none me-2"
+            width="16"
+            height="16"
+            aria-hidden="true"
+          >
+            <use xlink:href="#table"></use>
+          </svg>
+          Orders
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <svg
+            class="bi pe-none me-2"
+            width="16"
+            height="16"
+            aria-hidden="true"
+          >
+            <use xlink:href="#grid"></use>
+          </svg>
+          Products
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <svg
+            class="bi pe-none me-2"
+            width="16"
+            height="16"
+            aria-hidden="true"
+          >
+            <use xlink:href="#people-circle"></use>
+          </svg>
+          Customers
         </a>
       </li>
     </ul>
-
-    <h6
-      class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
-    >
-      <span>Saved reports</span>
-      <a class="link-secondary" href="#" aria-label="Add a new report">
-        <i class="bi bi-plus-circle"></i>
+    <hr />
+    <div class="dropdown">
+      <a
+        href="#"
+        class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://github.com/mdo.png"
+          alt=""
+          width="32"
+          height="32"
+          class="rounded-circle me-2"
+        />
+        <strong>mdo</strong>
       </a>
-    </h6>
-    <ul class="nav flex-column mb-2">
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-file-earmark-text"></i>
-          <span class="ms-2">Current month</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-file-earmark-text"></i>
-          <span class="ms-2">Last quarter</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-file-earmark-text"></i>
-          <span class="ms-2">Social engagement</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="#">
-          <i class="bi bi-file-earmark-text"></i>
-          <span class="ms-2">Year-end sale</span>
-        </a>
-      </li>
-    </ul>
+      <ul class="dropdown-menu text-small shadow">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
   </div>
-</nav>
+</div>

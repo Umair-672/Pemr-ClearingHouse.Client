@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Gateway } from '../gateway/gateway';
+import { BillingProvider } from './billing-provider';
 
 const routes: Routes = [
-  { path: '', component: Gateway}
+  {path: '', component: BillingProvider}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GatewayRoutingModule { }
+export class BillingProviderRoutingModule { }

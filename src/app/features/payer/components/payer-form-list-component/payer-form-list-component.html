@@ -1,162 +1,62 @@
-<div class="container mt-4">
-  <button class="btn btn-primary mb-3" (click)="openAddModal()">Add Payer</button>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Identification Code</th>
-        <th>Subscriber</th>
-        <th>Address 1</th>
-        <th>Address 2</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zip Code</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (payer of payers; track payer.id) {
-        <tr>
-          <td>{{ payer.name }}</td>
-          <td>{{ payer.identificationCode }}</td>
-          <td>{{ payer.subscriber?.name }}</td>
-          <td>{{ payer.address1 }}</td>
-          <td>{{ payer.address2 }}</td>
-          <td>{{ payer.city }}</td>
-          <td>{{ payer.state }}</td>
-          <td>{{ payer.zipCode }}</td>
-          <td>
-            <button class="btn btn-sm btn-info me-1" (click)="openEditModal(payer)">Edit</button>
-            <button class="btn btn-sm btn-danger" (click)="openDeleteModal(payer)">Delete</button>
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Payers</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Identification Code</th>
+            <th>Subscriber</th>
+            <th>Address 1</th>
+            <th>Address 2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (payer of payers; track payer.id) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ payer.name }}</td>
+              <td>{{ payer.identificationCode }}</td>
+              <!-- <td>{{ payer.subscriber?.name }}</td> -->
+              <td>{{ payer.address1 }}</td>
+              <td>{{ payer.address2 }}</td>
+              <td>{{ payer.city }}</td>
+              <td>{{ payer.state }}</td>
+              <td>{{ payer.zipCode }}</td>
+              <td class="text-end">
+                <button
+                  class="btn btn-icon btn-outline-secondary me-1"
+                  title="Edit"
+                  [routerLink]="['edit', payer.id]"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  class="btn btn-icon btn-outline-danger"
+                  title="Delete"
+                  (click)="openDeleteDialog(payer)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-@if (showAddModal) {
-  <div class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.5)">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Add Payer</h5>
-          <button type="button" class="btn-close" (click)="closeAddModal()"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="payerForm" (ngSubmit)="onAddSubmit()">
-            <div class="mb-3">
-              <label class="form-label">Name</label>
-              <input class="form-control" formControlName="name" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Identification Code</label>
-              <input class="form-control" formControlName="identificationCode" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Subscriber</label>
-              <select class="form-select" formControlName="subscriberID" required>
-                @for (sub of subscribers; track sub.id) {
-                  <option [value]="sub.id">{{ sub.name }}</option>
-                }
-              </select>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Address 1</label>
-              <input class="form-control" formControlName="address1">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Address 2</label>
-              <input class="form-control" formControlName="address2">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">City</label>
-              <input class="form-control" formControlName="city">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">State</label>
-              <input class="form-control" formControlName="state">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Zip Code</label>
-              <input class="form-control" formControlName="zipCode">
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="payerForm.invalid">Add</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-}
-
-@if (showEditModal) {
-  <div class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.5)">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit Payer</h5>
-          <button type="button" class="btn-close" (click)="closeEditModal()"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="payerForm" (ngSubmit)="onEditSubmit()">
-            <div class="mb-3">
-              <label class="form-label">Name</label>
-              <input class="form-control" formControlName="name" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Identification Code</label>
-              <input class="form-control" formControlName="identificationCode" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Subscriber</label>
-              <select class="form-select" formControlName="subscriberID" required>
-                @for (sub of subscribers; track sub.id) {
-                  <option [value]="sub.id">{{ sub.name }}</option>
-                }
-              </select>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Address 1</label>
-              <input class="form-control" formControlName="address1">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Address 2</label>
-              <input class="form-control" formControlName="address2">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">City</label>
-              <input class="form-control" formControlName="city">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">State</label>
-              <input class="form-control" formControlName="state">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Zip Code</label>
-              <input class="form-control" formControlName="zipCode">
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="payerForm.invalid">Save</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-}
-
-@if (showDeleteModal) {
-  <div class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.5)">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Delete Payer</h5>
-          <button type="button" class="btn-close" (click)="closeDeleteModal()"></button>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to delete <strong>{{ selectedPayer?.name }}</strong>?</p>
-          <button class="btn btn-danger me-2" (click)="onDeleteConfirm()">Yes, Delete</button>
-          <button class="btn btn-secondary" (click)="closeDeleteModal()">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
-}
+  <app-confirm-delete-dialog
+    *ngIf="showDeleteModal"
+    [entityName]="selectedPayer?.name ?? ''"
+    title="Delete Payer"
+    (closed)="onDeleteDialogClosed($event)">
+  </app-confirm-delete-dialog>

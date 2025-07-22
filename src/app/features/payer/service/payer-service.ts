@@ -8,6 +8,6 @@ import { BaseApiService } from '../../../shared/services/base-api.service';
 })
 export class PayerService extends BaseApiService<Payer> {
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:5025/api/Payers');
+    super(http, 'http://localhost:5025/api/Payer');
   }
 }

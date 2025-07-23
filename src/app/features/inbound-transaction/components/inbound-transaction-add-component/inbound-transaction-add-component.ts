@@ -5,6 +5,7 @@ import { InboundTransaction } from '../../model/inboundTransaction';
 import { InboundTransactionService } from '../../service/inboundTransaction-service';
 import { InboundClaimFile } from '../../../inbound-claim-file/model/inbound-claim-file-model';
 import { InboundClaimFileService } from '../../../inbound-claim-file/service/inbound-claim-file-service';
+import { DropdownConfig, DropdownOption } from '../../../../shared/components/searchable-dropdown/searchable-dropdown.component';
 
 @Component({
   selector: 'app-inbound-transaction-add-component',
@@ -15,6 +16,17 @@ import { InboundClaimFileService } from '../../../inbound-claim-file/service/inb
 export class InboundTransactionAddComponent implements OnInit {
   inboundTransactionForm!: FormGroup;
   inboundClaimFiles: InboundClaimFile[] = [];
+
+  // Configuration for the searchable dropdown
+  claimFileDropdownConfig: DropdownConfig = {
+    displayProperty: 'name',
+    valueProperty: 'id',
+    placeholder: 'Select inbound claim file...',
+    searchPlaceholder: 'Search and select inbound claim file...',
+    noResultsText: 'No claim files found',
+    icon: 'bi-file-earmark-text',
+    maxHeight: '200px'
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -42,13 +54,25 @@ export class InboundTransactionAddComponent implements OnInit {
   }
 
   loadInboundClaimFiles(): void {
-    this.inboundClaimFileService.getAll().subscribe(files => this.inboundClaimFiles = files);
+    this.inboundClaimFileService.getAll().subscribe(files => {
+      this.inboundClaimFiles = files;
+    });
+  }
+
+  onClaimFileSelectionChange(selectedOption: DropdownOption | null): void {
+    // Optional: Handle selection change events if needed
+    if (selectedOption) {
+      const selectedFile = selectedOption as InboundClaimFile;
+      this.inboundTransactionForm.get('inboundClaimFileID')?.setValue(selectedFile.id);
+    } else {
+      this.inboundTransactionForm.get('inboundClaimFileID')?.setValue(null);
+    }
   }
 
   onSubmit(): void {
     if (this.inboundTransactionForm.valid) {
       const inboundTransaction: InboundTransaction = this.inboundTransactionForm.value;
-      
+
       this.inboundTransactionService.create(inboundTransaction).subscribe({
         next: () => {
           this.inboundTransactionForm.reset();

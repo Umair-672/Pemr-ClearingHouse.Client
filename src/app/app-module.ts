@@ -13,6 +13,8 @@ import { SidePanel } from './layout/side-panel/side-panel';
 import { NavigatioBar } from './layout/header/navigatio-bar/navigatio-bar';
 import { httpAuthInterceptor } from './core/http-auth.interceptor';
 import { Auth } from './auth/auth';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { Auth } from './auth/auth';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     OAuthModule.forRoot()
   ],

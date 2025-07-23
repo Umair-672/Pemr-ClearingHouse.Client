@@ -15,19 +15,16 @@
         <!-- Inbound Claim File -->
         <div class="form-group mb-3">
           <label for="inboundClaimFileID" class="fw-semibold mb-1">Inbound Claim File</label>
-          <select
-            id="inboundClaimFileID"
-            class="form-select"
-            formControlName="inboundClaimFileID"
-            required
+          <app-searchable-dropdown
+            [options]="inboundClaimFiles"
+            [config]="claimFileDropdownConfig"
+            [disabled]="false"
+            [required]="true"
+            (selectionChange)="onClaimFileSelectionChange($event)"
             [ngClass]="{'is-invalid': inboundTransactionForm.get('inboundClaimFileID')?.invalid && inboundTransactionForm.get('inboundClaimFileID')?.touched}"
-          >
-            <option value="" disabled>Select inbound claim file</option>
-            @for (file of inboundClaimFiles; track file.name) {
-              <option [value]="file.name">{{ file.name }}</option>
-            }
-          </select>
-          <div *ngIf="inboundTransactionForm.get('inboundClaimFileID')?.invalid && inboundTransactionForm.get('inboundClaimFileID')?.touched" class="invalid-feedback">
+          ></app-searchable-dropdown>
+
+          <div *ngIf="inboundTransactionForm.get('inboundClaimFileID')?.invalid && inboundTransactionForm.get('inboundClaimFileID')?.touched" class="invalid-feedback d-block">
             Inbound claim file is required.
           </div>
         </div>

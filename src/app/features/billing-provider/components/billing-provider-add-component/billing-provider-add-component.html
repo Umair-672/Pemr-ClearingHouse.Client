@@ -7,10 +7,14 @@
       <form [formGroup]="billingProviderForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="form-group mb-3">
           <label for="inboundTransactionID" class="fw-semibold mb-1">Inbound Transaction ID</label>
-          <input id="inboundTransactionID" type="text" class="form-control"
-                 formControlName="inboundTransactionID" required
-                 placeholder="Enter inbound transaction ID"
-                 [ngClass]="{'is-invalid': billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched}" />
+          <app-searchable-dropdown
+            [options]="inboundTransactionFiles"
+            [config]="transactionDropdownConfig"
+            [disabled]="false"
+            [required]="true"
+            (selectionChange)="onTransactionFileSelectionChange($event)"
+            [ngClass]="{'is-invalid': billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched}"
+          ></app-searchable-dropdown>
           <div *ngIf="billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched" class="invalid-feedback">
             Inbound Transaction ID is required.
           </div>

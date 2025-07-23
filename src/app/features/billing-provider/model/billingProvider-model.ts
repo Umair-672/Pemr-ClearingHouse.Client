@@ -1,3 +1,5 @@
+import { InboundTransaction } from "../../inbound-transaction/model/inboundTransaction";
+
 export interface BillingProvider {
   inboundTransactionID: string;
   entityTypeQualifier: string;
@@ -11,6 +13,5 @@ export interface BillingProvider {
   state: string;
   zipCode: string;
   taxonomyCode: string;
-  // Optionally, you can add:
-  // inboundTransaction?: InboundTransaction;
+  inboundTransaction?: InboundTransaction;
 }

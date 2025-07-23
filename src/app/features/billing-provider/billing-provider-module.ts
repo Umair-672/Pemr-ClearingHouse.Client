@@ -8,6 +8,7 @@ import { BillingProviderAddComponent } from './components/billing-provider-add-c
 import { BillingProviderEditComponent } from './components/billing-provider-edit-component/billing-provider-edit-component';
 import { BillingProvider } from './billing-provider';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchableDropdownComponent } from "../../shared/components";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     BillingProviderRoutingModule,
-    ConfirmDeleteDialogComponent
-  ]
+    ConfirmDeleteDialogComponent,
+    SearchableDropdownComponent
+]
 })
 export class BillingProviderModule { }

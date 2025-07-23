@@ -6,7 +6,8 @@ import { InboundTransactionListComponent } from './components/inbound-transactio
 import { InboundTransactionAddComponent } from './components/inbound-transaction-add-component/inbound-transaction-add-component';
 import { InboundTransactionEditComponent } from './components/inbound-transaction-edit-component/inbound-transaction-edit-component';
 import { InboundTransaction } from './inbound-transaction';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SearchableDropdownComponent } from '../../shared/components';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     ConfirmDeleteDialogComponent,
+    SearchableDropdownComponent,
     InboundTransactionRoutingModule
   ]
 })

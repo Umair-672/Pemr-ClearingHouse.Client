@@ -1,0 +1,75 @@
+<div class="position-relative">
+  <div class="input-group">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchTerm"
+      (input)="onSearchInput()"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      [placeholder]="config.searchPlaceholder"
+      [disabled]="disabled"
+      autocomplete="off"
+      [attr.aria-expanded]="isDropdownOpen"
+      [attr.aria-haspopup]="true"
+      role="combobox"
+    />
+
+    <!-- Clear button (shown when option is selected) -->
+    @if (selectedOption && !disabled) {
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        (click)="clearSelection()"
+        title="Clear selection"
+        aria-label="Clear selection"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+    }
+
+    <!-- Dropdown toggle button -->
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="toggleDropdown()"
+      [disabled]="disabled"
+      [attr.aria-expanded]="isDropdownOpen"
+      aria-label="Toggle dropdown"
+    >
+      <i class="bi" [ngClass]="isDropdownOpen ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+    </button>
+  </div>
+
+  <!-- Dropdown Menu -->
+  <div
+    class="dropdown-menu w-100 shadow-sm"
+    [class.show]="isDropdownOpen"
+    [style.max-height]="config.maxHeight"
+    style="overflow-y: auto; z-index: 1050;"
+    role="listbox"
+  >
+    @if (filteredOptions.length === 0) {
+      <div class="dropdown-item-text text-muted">
+        <i class="bi bi-search me-2"></i>{{ config.noResultsText }}
+      </div>
+    } @else {
+      @for (option of filteredOptions; track option[config.valueProperty]) {
+        <button
+          type="button"
+          class="dropdown-item d-flex align-items-center"
+          (click)="selectOption(option)"
+          [class.active]="isOptionSelected(option)"
+          role="option"
+          [attr.aria-selected]="isOptionSelected(option)"
+        >
+          <i class="bi me-2 text-primary" [ngClass]="config.icon"></i>
+          <span>{{ option[config.displayProperty] }}</span>
+          @if (isOptionSelected(option)) {
+            <i class="bi bi-check-lg ms-auto text-success"></i>
+          }
+        </button>
+      }
+    }
+  </div>
+</div>

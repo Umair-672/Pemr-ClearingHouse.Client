@@ -5,6 +5,7 @@ import { InboundTransaction } from '../../model/inboundTransaction';
 import { InboundTransactionService } from '../../service/inboundTransaction-service';
 import { InboundClaimFile } from '../../../inbound-claim-file/model/inbound-claim-file-model';
 import { InboundClaimFileService } from '../../../inbound-claim-file/service/inbound-claim-file-service';
+import { DropdownConfig, DropdownOption } from '../../../../shared/components/searchable-dropdown/searchable-dropdown.component';
 
 @Component({
   selector: 'app-inbound-transaction-edit-component',
@@ -18,6 +19,17 @@ export class InboundTransactionEditComponent implements OnInit {
   inboundClaimFiles: InboundClaimFile[] = [];
   loading = false;
 
+    // Configuration for the searchable dropdown
+  claimFileDropdownConfig: DropdownConfig = {
+    displayProperty: 'name',
+    valueProperty: 'id',
+    placeholder: 'Select inbound claim file...',
+    searchPlaceholder: 'Search and select inbound claim file...',
+    noResultsText: 'No claim files found',
+    icon: 'bi-file-earmark-text',
+    maxHeight: '200px'
+  };
+
   constructor(
     private fb: FormBuilder,
     private inboundTransactionService: InboundTransactionService,
@@ -28,7 +40,7 @@ export class InboundTransactionEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.inboundTransactionId = this.route.snapshot.paramMap.get('id') || '';
-    
+
     this.inboundTransactionForm = this.fb.group({
       inboundClaimFileID: ['', Validators.required],
       ctrlNo: ['', Validators.required],
@@ -67,10 +79,18 @@ export class InboundTransactionEditComponent implements OnInit {
     });
   }
 
+    onClaimFileSelectionChange(selectedOption: DropdownOption | null): void {
+    // Optional: Handle selection change events if needed
+    if (selectedOption) {
+      const selectedFile = selectedOption as InboundClaimFile;
+      this.inboundTransactionForm.get('inboundClaimFileID')?.setValue(selectedFile.id);
+    }
+  }
+
   onSubmit(): void {
     if (this.inboundTransactionForm.valid) {
       const updatedTransaction: InboundTransaction = this.inboundTransactionForm.value;
-      
+
       this.inboundTransactionService.update(this.inboundTransactionId, updatedTransaction).subscribe({
         next: () => {
           this.router.navigate(['/inboundtransaction']);

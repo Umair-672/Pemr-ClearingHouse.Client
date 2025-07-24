@@ -1,7 +1,9 @@
+import { BillingProvider } from "../../billing-provider/model/billingProvider-model";
+
 export interface Subscriber {
-  id: string;
+  id?: string;
   billingProviderID: string;
-  billingProvider?: any; // Replace 'any' with BillingProvider interface if defined
+  billingProvider?: BillingProvider;
   firstName: string;
   lastName: string;
   middleName: string;
@@ -18,4 +20,4 @@ export interface Subscriber {
   claimFilingIndicator: string;
   gender: string;
   dob: Date;
-} 
+}

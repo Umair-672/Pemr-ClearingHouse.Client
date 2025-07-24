@@ -42,18 +42,13 @@
         <!-- Subscriber -->
         <div class="form-group mb-3">
           <label for="payerSubscriber" class="fw-semibold mb-1">Subscriber</label>
-          <select
-            id="payerSubscriber"
-            class="form-select"
-            formControlName="subscriberID"
-            required
-            [ngClass]="{'is-invalid': payerForm.get('subscriberID')?.invalid && payerForm.get('subscriberID')?.touched}"
-          >
-            <option value="" disabled>Select subscriber</option>
-            @for (sub of subscribers; track sub.id) {
-              <!-- <option [value]="sub.id">{{ sub.name }}</option> -->
-            }
-          </select>
+          <app-searchable-dropdown
+            [options]="subscribers"
+            [config]="payerDropdownConfig"
+            [disabled]="false"
+            [required]="true"
+            (selectionChange)="onSubscriberSelectionChange($event)"
+          ></app-searchable-dropdown>
           <div *ngIf="payerForm.get('subscriberID')?.invalid && payerForm.get('subscriberID')?.touched" class="invalid-feedback">
             Subscriber is required.
           </div>

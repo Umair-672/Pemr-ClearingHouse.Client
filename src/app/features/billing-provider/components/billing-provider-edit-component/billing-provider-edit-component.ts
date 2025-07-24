@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BillingProviderService } from '../../service/billing-provider-service';
 import { BillingProvider } from '../../model/billingProvider-model';
 import { InboundTransaction } from '../../../inbound-transaction/model/inboundTransaction';
-import { DropdownConfig, DropdownOption } from '../../../../shared/components/searchable-dropdown/searchable-dropdown.component';
 import { InboundTransactionService } from '../../../inbound-transaction/service/inboundTransaction-service';
 
 @Component({
@@ -18,16 +17,6 @@ export class BillingProviderEditComponent implements OnInit {
   providerId!: string;
   inboundTransactions: InboundTransaction[] = [];
   loading = false;
-
-  transactionDropdownConfig: DropdownConfig ={
-    displayProperty: 'id',
-    valueProperty: 'id',
-    placeholder: 'Select inbound transaction file...',
-    searchPlaceholder: 'Search and select inbound transaction file...',
-    noResultsText: 'No transaction files found',
-    icon: 'bi-file-earmark-text',
-    maxHeight: '200px',
-  };
 
   constructor(
     private fb: FormBuilder,
@@ -53,23 +42,9 @@ export class BillingProviderEditComponent implements OnInit {
       zipCode: ['', Validators.required],
       taxonomyCode: ['', Validators.required]
     });
-    this.loadInboundTransactions();
-    if(this.providerId) {
+
       this.loadBillingProvider();
-    }
   }
-
-
-    loadInboundTransactions(): void {
-      this.inboundTransactionService.getAll().subscribe({
-        next: (transactions: InboundTransaction[]) => {
-          this.inboundTransactions = transactions;
-        },
-        error: err => {
-          // Handle error (show message, etc.)
-        }
-      });
-    }
 
     loadBillingProvider(): void {
       this.loading = true;
@@ -84,15 +59,6 @@ export class BillingProviderEditComponent implements OnInit {
         }
       });
     }
-    onTransactionSelected(selectedOption: DropdownOption | null): void {
-      if (selectedOption) {
-        const selectedTransaction = selectedOption as InboundTransaction;
-        this.billingProviderForm.get('inboundTransactionID')?.setValue(selectedTransaction.id);
-      } else {
-        this.billingProviderForm.get('inboundTransactionID')?.setValue(null);
-      }
-    }
-
   onSubmit(): void {
     if (this.billingProviderForm.valid && this.providerId) {
       const updatedProvider: BillingProvider = {

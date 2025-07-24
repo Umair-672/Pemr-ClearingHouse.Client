@@ -7,6 +7,7 @@ import { Payer } from './payer';
 import { PayerFormAddComponent } from './components/payer-form-add-component/payer-form-add-component';
 import { PayerFormEditComponent } from './components/payer-form-edit-component/payer-form-edit-component';
 import { ConfirmDeleteDialogComponent } from '../../shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
+import { SearchableDropdownComponent } from '../../shared/components';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ConfirmDeleteDialogComponent } from '../../shared/components/confirm-de
     CommonModule,
     PayerRoutingModule,
     ReactiveFormsModule,
+    SearchableDropdownComponent,
     ConfirmDeleteDialogComponent
   ]
 })

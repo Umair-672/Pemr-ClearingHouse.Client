@@ -7,14 +7,10 @@
       <form [formGroup]="billingProviderForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="form-group mb-3">
           <label for="inboundTransactionID" class="fw-semibold mb-1">Inbound Transaction ID</label>
-          <app-searchable-dropdown
-            [options]="inboundTransactions"
-            [config]="transactionDropdownConfig"
-            [disabled]="false"
-            [required]="true"
-            formControlName="inboundTransactionID"
-            (selectionChange)="onTransactionSelected($event)"
-          ></app-searchable-dropdown>
+          <input id="inboundTransactionID" type="text" class="form-control"
+                 formControlName="inboundTransactionID" required
+                 placeholder="Enter inbound transaction ID"
+                 [ngClass]="{'is-invalid': billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched}" />
           <div *ngIf="billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched" class="invalid-feedback">
             Inbound Transaction ID is required.
           </div>

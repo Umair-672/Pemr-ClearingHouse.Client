@@ -7,6 +7,7 @@ import { SubscriberFormAddComponent } from './components/subscriber-form-add-com
 import { SubscriberFormEditComponent } from './components/subscriber-form-edit-component/subscriber-form-edit-component';
 import { ConfirmDeleteDialogComponent } from '../../shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { Subscriber } from './subscriber';
+import { SearchableDropdownComponent } from "../../shared/components";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { Subscriber } from './subscriber';
     CommonModule,
     ReactiveFormsModule,
     SubscriberRoutingModule,
-    ConfirmDeleteDialogComponent
-  ]
+    ConfirmDeleteDialogComponent,
+    SearchableDropdownComponent
+]
 })
 export class SubscriberModule { }

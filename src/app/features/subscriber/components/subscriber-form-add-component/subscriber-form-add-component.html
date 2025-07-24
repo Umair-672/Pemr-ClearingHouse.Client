@@ -4,86 +4,249 @@
       <h2 class="text mb-4 text-primary fw-bold">
         <i class="bi bi-person-plus"></i> Add New Subscriber
       </h2>
-      <form [formGroup]="subscriberForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <form
+        [formGroup]="subscriberForm"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+      >
         <div class="form-group mb-3">
-          <label for="billingProviderID" class="fw-semibold mb-1">Billing Provider ID</label>
-          <input id="billingProviderID" type="text" class="form-control" formControlName="billingProviderID" required [ngClass]="{'is-invalid': subscriberForm.get('billingProviderID')?.invalid && subscriberForm.get('billingProviderID')?.touched}" placeholder="Enter billing provider ID">
-          <div *ngIf="subscriberForm.get('billingProviderID')?.invalid && subscriberForm.get('billingProviderID')?.touched" class="invalid-feedback">Billing Provider ID is required.</div>
+          <label for="billingProviderID" class="fw-semibold mb-1"
+            >Billing Provider ID</label
+          >
+          <app-searchable-dropdown
+            [options]="billingProviders"
+            [config]="billingProviderDropdownConfig"
+            [disabled]="!billingProviders || billingProviders.length === 0"
+            [required]="true"
+            (selectionChange)="onProviderSelectionChange($event)"
+            [ngClass]="{'is-invalid': subscriberForm.get('billingProviderID')?.invalid && subscriberForm.get('billingProviderID')?.touched}"
+          ></app-searchable-dropdown>
+          <div
+            *ngIf="subscriberForm.get('billingProviderID')?.invalid && subscriberForm.get('billingProviderID')?.touched"
+            class="invalid-feedback"
+          >
+            Billing Provider ID is required.
+          </div>
         </div>
         <div class="form-group mb-3">
           <label for="firstName" class="fw-semibold mb-1">First Name</label>
-          <input id="firstName" type="text" class="form-control" formControlName="firstName" required [ngClass]="{'is-invalid': subscriberForm.get('firstName')?.invalid && subscriberForm.get('firstName')?.touched}" placeholder="Enter first name">
-          <div *ngIf="subscriberForm.get('firstName')?.invalid && subscriberForm.get('firstName')?.touched" class="invalid-feedback">First name is required.</div>
+          <input
+            id="firstName"
+            type="text"
+            class="form-control"
+            formControlName="firstName"
+            required
+            [ngClass]="{'is-invalid': subscriberForm.get('firstName')?.invalid && subscriberForm.get('firstName')?.touched}"
+            placeholder="Enter first name"
+          />
+          <div
+            *ngIf="subscriberForm.get('firstName')?.invalid && subscriberForm.get('firstName')?.touched"
+            class="invalid-feedback"
+          >
+            First name is required.
+          </div>
         </div>
         <div class="form-group mb-3">
           <label for="lastName" class="fw-semibold mb-1">Last Name</label>
-          <input id="lastName" type="text" class="form-control" formControlName="lastName" required [ngClass]="{'is-invalid': subscriberForm.get('lastName')?.invalid && subscriberForm.get('lastName')?.touched}" placeholder="Enter last name">
-          <div *ngIf="subscriberForm.get('lastName')?.invalid && subscriberForm.get('lastName')?.touched" class="invalid-feedback">Last name is required.</div>
+          <input
+            id="lastName"
+            type="text"
+            class="form-control"
+            formControlName="lastName"
+            required
+            [ngClass]="{'is-invalid': subscriberForm.get('lastName')?.invalid && subscriberForm.get('lastName')?.touched}"
+            placeholder="Enter last name"
+          />
+          <div
+            *ngIf="subscriberForm.get('lastName')?.invalid && subscriberForm.get('lastName')?.touched"
+            class="invalid-feedback"
+          >
+            Last name is required.
+          </div>
         </div>
         <div class="form-group mb-3">
           <label for="middleName" class="fw-semibold mb-1">Middle Name</label>
-          <input id="middleName" type="text" class="form-control" formControlName="middleName" placeholder="Enter middle name">
+          <input
+            id="middleName"
+            type="text"
+            class="form-control"
+            formControlName="middleName"
+            placeholder="Enter middle name"
+          />
         </div>
         <div class="form-group mb-3">
-          <label for="primaryIdentification" class="fw-semibold mb-1">Primary Identification</label>
-          <input id="primaryIdentification" type="text" class="form-control" formControlName="primaryIdentification" required [ngClass]="{'is-invalid': subscriberForm.get('primaryIdentification')?.invalid && subscriberForm.get('primaryIdentification')?.touched}" placeholder="Enter primary identification">
-          <div *ngIf="subscriberForm.get('primaryIdentification')?.invalid && subscriberForm.get('primaryIdentification')?.touched" class="invalid-feedback">Primary Identification is required.</div>
+          <label for="primaryIdentification" class="fw-semibold mb-1"
+            >Primary Identification</label
+          >
+          <input
+            id="primaryIdentification"
+            type="text"
+            class="form-control"
+            formControlName="primaryIdentification"
+            required
+            [ngClass]="{'is-invalid': subscriberForm.get('primaryIdentification')?.invalid && subscriberForm.get('primaryIdentification')?.touched}"
+            placeholder="Enter primary identification"
+          />
+          <div
+            *ngIf="subscriberForm.get('primaryIdentification')?.invalid && subscriberForm.get('primaryIdentification')?.touched"
+            class="invalid-feedback"
+          >
+            Primary Identification is required.
+          </div>
         </div>
         <div class="form-group mb-3">
           <label for="address1" class="fw-semibold mb-1">Address 1</label>
-          <input id="address1" type="text" class="form-control" formControlName="address1" placeholder="Enter address 1">
+          <input
+            id="address1"
+            type="text"
+            class="form-control"
+            formControlName="address1"
+            placeholder="Enter address 1"
+          />
         </div>
         <div class="form-group mb-3">
           <label for="address2" class="fw-semibold mb-1">Address 2</label>
-          <input id="address2" type="text" class="form-control" formControlName="address2" placeholder="Enter address 2">
+          <input
+            id="address2"
+            type="text"
+            class="form-control"
+            formControlName="address2"
+            placeholder="Enter address 2"
+          />
         </div>
         <div class="form-group mb-3">
           <label for="city" class="fw-semibold mb-1">City</label>
-          <input id="city" type="text" class="form-control" formControlName="city" placeholder="Enter city">
+          <input
+            id="city"
+            type="text"
+            class="form-control"
+            formControlName="city"
+            placeholder="Enter city"
+          />
         </div>
         <div class="form-group mb-3">
           <label for="state" class="fw-semibold mb-1">State</label>
-          <input id="state" type="text" class="form-control" formControlName="state" placeholder="Enter state">
+          <input
+            id="state"
+            type="text"
+            class="form-control"
+            formControlName="state"
+            placeholder="Enter state"
+          />
         </div>
         <div class="form-group mb-3">
           <label for="zipCode" class="fw-semibold mb-1">Zip Code</label>
-          <input id="zipCode" type="text" class="form-control" formControlName="zipCode" placeholder="Enter zip code">
+          <input
+            id="zipCode"
+            type="text"
+            class="form-control"
+            formControlName="zipCode"
+            placeholder="Enter zip code"
+          />
         </div>
         <div class="form-group mb-3">
-          <label for="secondaryIdentification" class="fw-semibold mb-1">Secondary Identification</label>
-          <input id="secondaryIdentification" type="text" class="form-control" formControlName="secondaryIdentification" placeholder="Enter secondary identification">
+          <label for="secondaryIdentification" class="fw-semibold mb-1"
+            >Secondary Identification</label
+          >
+          <input
+            id="secondaryIdentification"
+            type="text"
+            class="form-control"
+            formControlName="secondaryIdentification"
+            placeholder="Enter secondary identification"
+          />
         </div>
         <div class="form-group mb-3">
-          <label for="payerResponsibility" class="fw-semibold mb-1">Payer Responsibility</label>
-          <input id="payerResponsibility" type="text" class="form-control" formControlName="payerResponsibility" placeholder="Enter payer responsibility">
+          <label for="payerResponsibility" class="fw-semibold mb-1"
+            >Payer Responsibility</label
+          >
+          <input
+            id="payerResponsibility"
+            type="text"
+            class="form-control"
+            formControlName="payerResponsibility"
+            placeholder="Enter payer responsibility"
+          />
         </div>
         <div class="form-group mb-3">
-          <label for="relationshipCode" class="fw-semibold mb-1">Relationship Code</label>
-          <input id="relationshipCode" type="text" class="form-control" formControlName="relationshipCode" placeholder="Enter relationship code">
+          <label for="relationshipCode" class="fw-semibold mb-1"
+            >Relationship Code</label
+          >
+          <input
+            id="relationshipCode"
+            type="text"
+            class="form-control"
+            formControlName="relationshipCode"
+            placeholder="Enter relationship code"
+          />
         </div>
         <div class="form-group mb-3">
-          <label for="insuranceTypeCode" class="fw-semibold mb-1">Insurance Type Code</label>
-          <input id="insuranceTypeCode" type="text" class="form-control" formControlName="insuranceTypeCode" placeholder="Enter insurance type code">
+          <label for="insuranceTypeCode" class="fw-semibold mb-1"
+            >Insurance Type Code</label
+          >
+          <input
+            id="insuranceTypeCode"
+            type="text"
+            class="form-control"
+            formControlName="insuranceTypeCode"
+            placeholder="Enter insurance type code"
+          />
         </div>
         <div class="form-group mb-3">
-          <label for="claimFilingIndicator" class="fw-semibold mb-1">Claim Filing Indicator</label>
-          <input id="claimFilingIndicator" type="text" class="form-control" formControlName="claimFilingIndicator" placeholder="Enter claim filing indicator">
+          <label for="claimFilingIndicator" class="fw-semibold mb-1"
+            >Claim Filing Indicator</label
+          >
+          <input
+            id="claimFilingIndicator"
+            type="text"
+            class="form-control"
+            formControlName="claimFilingIndicator"
+            placeholder="Enter claim filing indicator"
+          />
         </div>
         <div class="form-group mb-3">
           <label for="gender" class="fw-semibold mb-1">Gender</label>
-          <input id="gender" type="text" class="form-control" formControlName="gender" placeholder="Enter gender">
+          <select
+            id="gender"
+            type="text"
+            class="form-select"
+            formControlName="gender"
+            placeholder="Enter gender"
+          >
+            <option value="">-Select Gender-</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
         <div class="form-group mb-3">
           <label for="dob" class="fw-semibold mb-1">Date of Birth</label>
-          <input id="dob" type="date" class="form-control" formControlName="dob" required [ngClass]="{'is-invalid': subscriberForm.get('dob')?.invalid && subscriberForm.get('dob')?.touched}" placeholder="Select date of birth">
-          <div *ngIf="subscriberForm.get('dob')?.invalid && subscriberForm.get('dob')?.touched" class="invalid-feedback">Date of Birth is required.</div>
+          <input
+            id="dob"
+            type="date"
+            class="form-control"
+            formControlName="dob"
+            required
+            [ngClass]="{'is-invalid': subscriberForm.get('dob')?.invalid && subscriberForm.get('dob')?.touched}"
+            placeholder="Select date of birth"
+          />
+          <div
+            *ngIf="subscriberForm.get('dob')?.invalid && subscriberForm.get('dob')?.touched"
+            class="invalid-feedback"
+          >
+            Date of Birth is required.
+          </div>
         </div>
         <div class="d-grid">
-          <button type="submit" class="btn btn-primary" [disabled]="subscriberForm.invalid">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="subscriberForm.invalid"
+          >
             <i class="bi bi-plus-circle me-2"></i>Add Subscriber
           </button>
         </div>
       </form>
     </div>
   </div>
-</div> 
+</div>

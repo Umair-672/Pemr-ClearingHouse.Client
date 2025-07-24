@@ -1,8 +1,7 @@
-import { SubscriberService } from './../../../subscriber/service/subscriber-service';
 import { Component, OnInit } from '@angular/core';
 import { PayerService } from '../../service/payer-service';
 import { Payer } from '../../model/payer.model';
-import { Subscriber } from '../../../subscriber/model/subscriber.model';
+
 
 @Component({
   selector: 'app-payer-form-list-component',
@@ -12,23 +11,17 @@ import { Subscriber } from '../../../subscriber/model/subscriber.model';
 })
 export class PayerFormListComponent implements OnInit {
   payers: Payer[] = [];
-  subscribers: Subscriber[] = [];
   selectedPayer: Payer | null = null;
   showDeleteModal = false;
 
-  constructor(private payerService: PayerService, private subscriberService: SubscriberService ) {}
+  constructor(private payerService: PayerService) {}
 
   ngOnInit(): void {
     this.loadPayers();
-    this.getSubscribers();
   }
 
   loadPayers(): void {
     this.payerService.getAll().subscribe(payers => this.payers = payers);
-  }
-
-  getSubscribers(): void {
-
   }
 
   openDeleteDialog(payer: Payer) {

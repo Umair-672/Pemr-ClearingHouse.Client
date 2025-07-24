@@ -1,6 +1,7 @@
 import { InboundTransaction } from "../../inbound-transaction/model/inboundTransaction";
 
 export interface BillingProvider {
+  id?: string;
   inboundTransactionID: string;
   entityTypeQualifier: string;
   firstName: string;

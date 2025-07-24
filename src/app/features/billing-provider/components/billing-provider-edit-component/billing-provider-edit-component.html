@@ -1,5 +1,5 @@
 <div class="container py-4">
-  <div class="row justify-content-center">
+  <div class="row justify-content">
     <div class="col-md-7 col-lg-6">
       <h2 class="mb-4 text-primary fw-bold">
         <i class="bi bi-briefcase"></i> Edit Billing Provider
@@ -7,10 +7,14 @@
       <form [formGroup]="billingProviderForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="form-group mb-3">
           <label for="inboundTransactionID" class="fw-semibold mb-1">Inbound Transaction ID</label>
-          <input id="inboundTransactionID" type="text" class="form-control"
-                 formControlName="inboundTransactionID" required
-                 placeholder="Enter inbound transaction ID"
-                 [ngClass]="{'is-invalid': billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched}" />
+          <app-searchable-dropdown
+            [options]="inboundTransactions"
+            [config]="transactionDropdownConfig"
+            [disabled]="false"
+            [required]="true"
+            formControlName="inboundTransactionID"
+            (selectionChange)="onTransactionSelected($event)"
+          ></app-searchable-dropdown>
           <div *ngIf="billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched" class="invalid-feedback">
             Inbound Transaction ID is required.
           </div>
@@ -117,9 +121,11 @@
             Taxonomy Code is required.
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="billingProviderForm.invalid">
-          Update
-        </button>
+     <div class="d-grid">
+         <button type="submit" class="btn btn-primary" [disabled]="billingProviderForm.invalid">
+            <i class="bi bi-pencil-square me-2"></i>Edit Billing Provider
+          </button>
+     </div>
       </form>
     </div>
   </div>

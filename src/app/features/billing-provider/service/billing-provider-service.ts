@@ -6,7 +6,7 @@ import { BillingProvider } from "../model/billingProvider-model";
 @Injectable({ providedIn: "root" })
 export class BillingProviderService extends BaseApiService<BillingProvider> {
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:5025/api/billing-provider');
+    super(http, 'http://localhost:5025/api/BillingProvider');
   }
 
 }

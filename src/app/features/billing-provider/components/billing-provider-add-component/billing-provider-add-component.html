@@ -8,11 +8,11 @@
         <div class="form-group mb-3">
           <label for="inboundTransactionID" class="fw-semibold mb-1">Inbound Transaction ID</label>
           <app-searchable-dropdown
-            [options]="inboundTransactionFiles"
+            [options]="inboundTransactions"
             [config]="transactionDropdownConfig"
             [disabled]="false"
             [required]="true"
-            (selectionChange)="onTransactionFileSelectionChange($event)"
+            (selectionChange)="onTransactionSelectionChange($event)"
             [ngClass]="{'is-invalid': billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched}"
           ></app-searchable-dropdown>
           <div *ngIf="billingProviderForm.get('inboundTransactionID')?.invalid && billingProviderForm.get('inboundTransactionID')?.touched" class="invalid-feedback">

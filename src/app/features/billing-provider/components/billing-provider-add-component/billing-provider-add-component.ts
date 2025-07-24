@@ -1,3 +1,4 @@
+import { InboundTransactionService } from './../../../inbound-transaction/service/inboundTransaction-service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,21 +16,22 @@ import { InboundTransaction } from '../../../inbound-transaction/model/inboundTr
 export class BillingProviderAddComponent implements OnInit {
 
    billingProviderForm!: FormGroup;
-   inboundTransactionFiles: InboundTransaction[] = [];
-  transactionDropdownConfig: DropdownConfig ={
-    displayProperty: 'name',
-    valueProperty: 'id',
-    placeholder: 'Select inbound transaction file...',
-    searchPlaceholder: 'Search and select inbound transaction file...',
-    noResultsText: 'No transaction files found',
-    icon: 'bi-file-earmark-text',
-    maxHeight: '200px',
-  };
+   inboundTransactions: InboundTransaction[] = [];
+    transactionDropdownConfig: DropdownConfig ={
+      displayProperty: 'id',
+      valueProperty: 'id',
+      placeholder: 'Select inbound transaction file...',
+      searchPlaceholder: 'Search and select inbound transaction file...',
+      noResultsText: 'No transaction files found',
+      icon: 'bi-file-earmark-text',
+      maxHeight: '200px',
+    };
 
 
   constructor(
     private fb: FormBuilder,
     private billingProviderService: BillingProviderService,
+    private inboundTransactionService: InboundTransactionService,
     private router: Router
   ) {}
 
@@ -48,12 +50,20 @@ export class BillingProviderAddComponent implements OnInit {
       zipCode: ['', Validators.required],
       taxonomyCode: ['', Validators.required],
     });
+
+    this.loadTransactions();
   }
 
-  onTransactionFileSelectionChange(selectOption: DropdownOption | null): void {
+  loadTransactions(): void {
+    this.inboundTransactionService.getAll().subscribe(transactions => {
+      this.inboundTransactions = transactions;
+    });
+  }
+
+  onTransactionSelectionChange(selectOption: DropdownOption | null): void {
     if(selectOption) {
-      const selectedFile = selectOption as InboundTransaction;
-      this.billingProviderForm.get('inboundTransactionID')?.setValue(selectedFile.id);
+      const transaction = selectOption as InboundTransaction;
+      this.billingProviderForm.get('inboundTransactionID')?.setValue(transaction.id);
     }else {
       this.billingProviderForm.get('inboundTransactionID')?.setValue('');
     }

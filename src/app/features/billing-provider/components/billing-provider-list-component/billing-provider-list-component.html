@@ -39,17 +39,17 @@
               <td>{{ provider.state }}</td>
               <td>{{ provider.zipCode }}</td>
               <td>{{ provider.taxonomyCode }}</td>
-              <td class="text-end">
+              <td class="text-end text-nowrap">
                 <button
                   class="btn btn-icon btn-outline-secondary me-1"
-                  title="Edit"
-                  [routerLink]="['edit', provider.inboundTransactionID]"
+                  title="Edit billingProvider"
+                  [routerLink]="['edit', provider.id]"
                 >
                   <i class="bi bi-pencil"></i>
                 </button>
                 <button
                   class="btn btn-icon btn-outline-danger"
-                  title="Delete"
+                  title="Delete billingProvider"
                   (click)="openDeleteDialog(provider)"
                 >
                   <i class="bi bi-trash"></i>

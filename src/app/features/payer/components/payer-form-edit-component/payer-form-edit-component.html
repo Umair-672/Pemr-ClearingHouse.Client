@@ -41,19 +41,11 @@
 
         <!-- Subscriber -->
         <div class="form-group mb-3">
-          <label for="payerSubscriber" class="fw-semibold mb-1">Subscriber</label>
-          <select
-            id="payerSubscriber"
-            class="form-select"
-            formControlName="subscriberID"
-            required
-            [ngClass]="{'is-invalid': payerForm.get('subscriberID')?.invalid && payerForm.get('subscriberID')?.touched}"
-          >
-            <option value="" disabled>Select subscriber</option>
-            @for (sub of subscribers; track sub.id) {
-              <!-- <option [value]="sub.id">{{ sub.name }}</option> -->
-            }
-          </select>
+          <label for="subscriberID" class="fw-semibold mb-1">Subscriber</label>
+          <input id="subscriberID" type="text" class="form-control"
+                 formControlName="subscriberID" required
+                 placeholder="Enter subscriber ID"
+                 [ngClass]="{'is-invalid': payerForm.get('subscriberID')?.invalid && payerForm.get('subscriberID')?.touched}" />
           <div *ngIf="payerForm.get('subscriberID')?.invalid && payerForm.get('subscriberID')?.touched" class="invalid-feedback">
             Subscriber is required.
           </div>

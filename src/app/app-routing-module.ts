@@ -2,9 +2,11 @@ import { Auth } from './auth/auth';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { Logout } from './auth/logout/logout';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'logout', component: Logout},
   {path: 'organizations',
    loadChildren: () => import('./features/organization/organization-module').then(m => m.OrganizationModule)
   },

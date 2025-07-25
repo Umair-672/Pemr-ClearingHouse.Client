@@ -9,5 +9,5 @@ export const authConfig: AuthConfig = {
   scope: 'openid profile email', // Adjust scopes as needed
   showDebugInformation: true,
   requireHttps: false, // Only for development, set to true in production
-  logoutUrl: 'http://localhost:4200',
+  logoutUrl: 'http://localhost:4200/dasboard',
 };

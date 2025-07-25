@@ -18,23 +18,29 @@ export class App {
   }
 
   configureAuth() {
-    // this.oauthService.configure(authConfig);
-    // if (!this.oauthService.hasValidAccessToken()) {
-    //   this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-    //         const isReturningFromAuth = window.location.search.includes('code=') || window.location.hash.includes('access_token');
+    this.oauthService.configure(authConfig);
+    if (!this.oauthService.hasValidAccessToken()) {
+      this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
+          debugger;
+            const isReturningFromAuth = window.location.search.includes('code=') || window.location.hash.includes('access_token');
 
-    //         if (!isReturningFromAuth && !this.oauthService.hasValidAccessToken()) {
-    //           this.oauthService.initCodeFlow();
-    //           this.showLayout = false;
-    //         } else {
-    //           this.showLayout = true;
-    //         }
-    //       });
-    // } else {
-    //   this.showLayout = true;
-    // }
-
-    this.showLayout = true;
+            if (!isReturningFromAuth && !this.oauthService.hasValidAccessToken()) {
+              this.oauthService.initCodeFlow();
+              this.showLayout = false;
+            } else {
+              if (!this.oauthService.hasValidAccessToken()){
+                this.showLayout = false;
+                this.router.navigate(['/']);
+              }else{
+                this.showLayout = true;
+                this.router.navigate(['/dashboard']);
+              }
+            }
+          });
+    } else {
+      this.showLayout = true;
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   login() {
@@ -43,6 +49,8 @@ export class App {
 
   logout() {
     this.oauthService.logOut();
+    this.showLayout = false;
+    this.router.navigate(['/']);
   }
 
   get token() {

@@ -8,14 +8,31 @@
         <div class="form-group mb-3">
           <label for="billingProviderID" class="fw-semibold mb-1">Billing Provider ID</label>
           <input id="billingProviderID" type="text" class="form-control" formControlName="billingProviderID" required />
+          <div
+            *ngIf="subscriberForm.get('billingProviderID')?.invalid && subscriberForm.get('billingProviderID')?.touched"
+            class="invalid-feedback">
+            Billing provider ID is required.
+          </div>
         </div>
         <div class="form-group mb-3">
           <label for="firstName" class="fw-semibold mb-1">First Name</label>
-          <input id="firstName" type="text" class="form-control" formControlName="firstName" required />
+          <input id="firstName" type="text" class="form-control" formControlName="firstName" required
+          [ngClass]="{'is-invalid': subscriberForm.get('firstName')?.invalid && subscriberForm.get('firstName')?.touched}"
+          placeholder="Enter first name"/>
+          <div *ngIf="subscriberForm.get('firstName')?.invalid && subscriberForm.get('firstName')?.touched"
+            class="invalid-feedback">
+            First name is required.
+          </div>
         </div>
         <div class="form-group mb-3">
           <label for="lastName" class="fw-semibold mb-1">Last Name</label>
-          <input id="lastName" type="text" class="form-control" formControlName="lastName" required />
+          <input id="lastName" type="text" class="form-control" formControlName="lastName" required
+          [ngClass]="{'is-invalid': subscriberForm.get('lastName')?.invalid && subscriberForm.get('lastName')?.touched}"
+          placeholder="Enter last name"/>
+          <div *ngIf="subscriberForm.get('lastName')?.invalid && subscriberForm.get('lastName')?.touched"
+            class="invalid-feedback">
+            Last name is required.
+          </div>
         </div>
         <div class="form-group mb-3">
           <label for="middleName" class="fw-semibold mb-1">Middle Name</label>
@@ -23,7 +40,15 @@
         </div>
         <div class="form-group mb-3">
           <label for="primaryIdentification" class="fw-semibold mb-1">Primary Identification</label>
-          <input id="primaryIdentification" type="text" class="form-control" formControlName="primaryIdentification" required />
+          <input id="primaryIdentification" type="text" class="form-control" formControlName="primaryIdentification"
+            required
+            [ngClass]="{'is-invalid': subscriberForm.get('primaryIdentification')?.invalid && subscriberForm.get('primaryIdentification')?.touched}"
+            placeholder="Enter primary identification"/>
+          <div
+            *ngIf="subscriberForm.get('primaryIdentification')?.invalid && subscriberForm.get('primaryIdentification')?.touched"
+            class="invalid-feedback">
+            Primary identification is required.
+          </div>
         </div>
         <div class="form-group mb-3">
           <label for="address1" class="fw-semibold mb-1">Address 1</label>
@@ -47,7 +72,8 @@
         </div>
         <div class="form-group mb-3">
           <label for="secondaryIdentification" class="fw-semibold mb-1">Secondary Identification</label>
-          <input id="secondaryIdentification" type="text" class="form-control" formControlName="secondaryIdentification" />
+          <input id="secondaryIdentification" type="text" class="form-control"
+            formControlName="secondaryIdentification" />
         </div>
         <div class="form-group mb-3">
           <label for="payerResponsibility" class="fw-semibold mb-1">Payer Responsibility</label>
@@ -67,11 +93,28 @@
         </div>
         <div class="form-group mb-3">
           <label for="gender" class="fw-semibold mb-1">Gender</label>
-          <input id="gender" type="text" class="form-control" formControlName="gender" />
+          <select
+            id="gender"
+            type="text"
+            class="form-select"
+            formControlName="gender"
+            placeholder="Enter gender"
+          >
+            <option value="">-Select Gender-</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
         <div class="form-group mb-3">
           <label for="dob" class="fw-semibold mb-1">Date of Birth</label>
-          <input id="dob" type="date" class="form-control" formControlName="dob" required />
+          <input id="dob" type="date" class="form-control" formControlName="dob" required
+          [ngClass]="{'is-invalid': subscriberForm.get('dob')?.invalid && subscriberForm.get('dob')?.touched}"
+          placeholder="Enter date of birth"/>
+          <div *ngIf="subscriberForm.get('dob')?.invalid && subscriberForm.get('dob')?.touched"
+            class="invalid-feedback">
+            Date of birth is required.
+          </div>
         </div>
         <div class="d-grid">
           <button type="submit" class="btn btn-primary" [disabled]="subscriberForm.invalid">
@@ -81,4 +124,4 @@
       </form>
     </div>
   </div>
-</div> 
+</div>

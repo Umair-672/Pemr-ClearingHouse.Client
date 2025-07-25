@@ -17,7 +17,7 @@ export class SubscriberFormAddComponent implements OnInit {
   billingProviders: BillingProvider[] = [];
 
   billingProviderDropdownConfig: DropdownConfig ={
-    displayProperty: 'id',
+    displayProperty: 'entityTypeQualifier',
     valueProperty: 'id',
     placeholder: 'Select billing provider...',
     searchPlaceholder: 'Search and select billing provider...',
@@ -92,4 +92,4 @@ export class SubscriberFormAddComponent implements OnInit {
       this.subscriberForm.markAllAsTouched();
     }
   }
-} 
+}

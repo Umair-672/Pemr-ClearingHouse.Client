@@ -22,14 +22,20 @@ const routes: Routes = [
   {path: 'subscriber',
    loadChildren: () => import('./features/subscriber/subscriber-module').then(m => m.SubscriberModule)
   },
-  {path: 'billing-provider',
+  {path: 'billingProvider',
    loadChildren: () => import('./features/billing-provider/billing-provider-module').then(m => m.BillingProviderModule)
   },
-  {path: 'inbound-claim-file',
+  {path: 'inboundClaimFile',
    loadChildren: () => import('./features/inbound-claim-file/inbound-claim-file-module').then(m => m.InboundClaimFileModule)
   },
   {path: 'inboundtransaction',
    loadChildren: () => import('./features/inbound-transaction/inbound-transaction-module').then(m => m.InboundTransactionModule)
+  },
+  {path: 'patient',
+   loadChildren: () => import('./features/patient/patient-module').then(m => m.PatientModule)
+  },
+  {path: 'billingPrvSecIdentification',
+   loadChildren: () => import('./features/billing-prv-sec-identification/billing-prv-sec-identification-module').then(m => m.BillingPrvSecIdentificationModule)
   },
 ];
 

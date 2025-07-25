@@ -19,7 +19,7 @@ export class PayerFormAddComponent implements OnInit {
   loading = false;
 
   payerDropdownConfig: DropdownConfig = {
-    displayProperty: 'id',
+    displayProperty: 'firstName',
     valueProperty: 'id',
     placeholder: 'Select payer...',
     searchPlaceholder: 'Search and select payer...',

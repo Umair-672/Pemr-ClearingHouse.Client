@@ -18,7 +18,7 @@ export class BillingProviderAddComponent implements OnInit {
    billingProviderForm!: FormGroup;
    inboundTransactions: InboundTransaction[] = [];
     transactionDropdownConfig: DropdownConfig ={
-      displayProperty: 'id',
+      displayProperty: 'versionName',
       valueProperty: 'id',
       placeholder: 'Select inbound transaction file...',
       searchPlaceholder: 'Search and select inbound transaction file...',

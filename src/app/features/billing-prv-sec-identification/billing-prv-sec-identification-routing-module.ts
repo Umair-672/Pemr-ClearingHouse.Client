@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Dashboard } from './dashboard';
+import { BillingPrvSecIdentification } from './billing-prv-sec-identification';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: Dashboard
-  }
+  {path: '', component: BillingPrvSecIdentification},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class BillingPrvSecIdentificationRoutingModule { }

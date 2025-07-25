@@ -8,7 +8,7 @@
         <thead class="table-light">
           <tr>
             <th>#</th>
-            <th scope="col" class="text-nowrap">InboundTransaction Id</th>
+            <!-- <th scope="col" class="text-nowrap">InboundTransaction Id</th> -->
             <th scope="col" class="text-nowrap">inboundClaimFile</th>
             <th scope="col" class="text-nowrap">Control No</th>
             <th scope="col" class="text-nowrap">Version Name</th>
@@ -29,7 +29,7 @@
           @for (transaction of inboundTransactions; track transaction.id) {
           <tr>
             <td>{{ $index + 1 }}</td>
-            <td>{{ transaction.id }}</td>
+            <!-- <td>{{ transaction.id }}</td> -->
             <td>{{ transaction.inboundClaimFile?.name }}</td>
             <td>{{ transaction.ctrlNo }}</td>
             <td>{{ transaction.versionName }}</td>

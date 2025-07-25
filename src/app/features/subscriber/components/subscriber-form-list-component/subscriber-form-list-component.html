@@ -8,7 +8,7 @@
         <thead class="table-light">
   <tr>
     <th scope="col" class="text-nowrap">#</th>
-    <th scope="col" class="text-nowrap">Billing Provider ID</th>
+    <th scope="col" class="text-nowrap">Billing Provider</th>
     <th scope="col" class="text-nowrap">First Name</th>
     <th scope="col" class="text-nowrap">Last Name</th>
     <th scope="col" class="text-nowrap">Middle Name</th>
@@ -33,7 +33,7 @@
           @for (subscriber of subscribers; track subscriber.id) {
             <tr>
               <td>{{ $index + 1 }}</td>
-              <td>{{ subscriber.billingProviderID }}</td>
+              <td>{{ subscriber.billingProvider?.entityTypeQualifier }}</td>
               <td>{{ subscriber.firstName }}</td>
               <td>{{ subscriber.lastName }}</td>
               <td>{{ subscriber.middleName }}</td>

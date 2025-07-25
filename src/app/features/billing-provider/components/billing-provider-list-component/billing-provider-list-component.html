@@ -27,7 +27,7 @@
           @for (provider of billingProviders; track provider.inboundTransactionID) {
             <tr>
               <td>{{ $index + 1 }}</td>
-              <td>{{ provider.inboundTransactionID }}</td>
+              <td>{{ provider.inboundTransaction?.versionName }}</td>
               <td>{{ provider.entityTypeQualifier }}</td>
               <td>{{ provider.firstName }}</td>
               <td>{{ provider.lastName }}</td>

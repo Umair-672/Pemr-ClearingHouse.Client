@@ -6,7 +6,7 @@
       </h2>
       <form [formGroup]="billingProviderForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="form-group mb-3">
-          <label for="inboundTransactionID" class="fw-semibold mb-1">Inbound Transaction ID</label>
+          <label for="inboundTransactionID" class="fw-semibold mb-1">Inbound Transaction</label>
           <app-searchable-dropdown
             [options]="inboundTransactions"
             [config]="transactionDropdownConfig"
@@ -121,11 +121,9 @@
             Taxonomy Code is required.
           </div>
         </div>
-        <div class="d-grid">
-          <button type="submit" class="btn btn-primary" [disabled]="billingProviderForm.invalid">
+        <button type="submit" class="btn btn-primary" [disabled]="billingProviderForm.invalid">
           <i class="bi bi-plus-circle me-2"></i>Add Billing Provider
         </button>
-        </div>
       </form>
     </div>
   </div>

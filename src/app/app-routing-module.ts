@@ -37,6 +37,72 @@ const routes: Routes = [
   {path: 'billingPrvSecIdentification',
    loadChildren: () => import('./features/billing-prv-sec-identification/billing-prv-sec-identification-module').then(m => m.BillingPrvSecIdentificationModule)
   },
+  {path: 'claim',
+   loadChildren: () => import('./features/claim/claim-module').then(m => m.ClaimModule)
+  },
+  {path: 'claimEntity',
+   loadChildren: () => import('./features/claim-entity/claim-entity-module').then(m => m.ClaimEntityModule)
+  },
+  {path: 'claimStatus',
+   loadChildren: () => import('./features/claim-status/claim-status-module').then(m => m.ClaimStatusModule)
+  },
+  {path: 'dialupSettings',
+   loadChildren: () => import('./features/dialup-settings/dialup-settings-module').then(m => m.DialupSettingsModule)
+  },
+  {path: 'ftpsettings',
+   loadChildren: () => import('./features/ftpsettings/ftpsettings-module').then(m => m.FTPSettingsModule)
+  },
+  {path: 'insurance',
+   loadChildren: () => import('./features/insurance/insurance-module').then(m => m.InsuranceModule)
+  },
+  {path: 'insuranceCarrier',
+   loadChildren: () => import('./features/insurance-carrier/insurance-carrier-module').then(m => m.InsuranceCarrierModule)
+  },
+  {path: 'interpretationEntity',
+   loadChildren: () => import('./features/interpretation-entity/interpretation-entity-module').then(m => m.InterpretationEntityModule)
+  },
+  {path: 'interpretationField',
+   loadChildren: () => import('./features/interpretation-field/interpretation-field-module').then(m => m.InterpretationFieldModule)
+  },
+  {path: 'interpretedResponse',
+   loadChildren: () => import('./features/interpreted-response/interpreted-response-module').then(m => m.InterpretedResponseModule)
+  },
+  {path: 'interpretedResponseField',
+   loadChildren: () => import('./features/interpreted-response-field/interpreted-response-field-module').then(m => m.InterpretedResponseFieldModule)
+  },
+  {path: 'outboundClaim',
+   loadChildren: () => import('./features/outbound-claim/outbound-claim-module').then(m => m.OutboundClaimModule)
+  },
+  {path: 'outboundClaimFile',
+   loadChildren: () => import('./features/outbound-claim-file/outbound-claim-file-module').then(m => m.OutboundClaimFileModule)
+  },
+  {path: 'outboundTransaction',
+   loadChildren: () => import('./features/outbound-transaction/outbound-transaction-module').then(m => m.OutboundTransactionModule)
+  },
+  {path: 'paytoAddress',
+   loadChildren: () => import('./features/payto-address/payto-address-module').then(m => m.PaytoAddressModule)
+  },
+  {path: 'responseKeyword',
+   loadChildren: () => import('./features/response-keyword/response-keyword-module').then(m => m.ResponseKeywordModule)
+  },
+  {path: 'responseKeywordField',
+   loadChildren: () => import('./features/response-keyword-field/response-keyword-field-module').then(m => m.ResponseKeywordFieldModule)
+  },
+  {path: 'rttransactionSettings',
+   loadChildren: () => import('./features/rttransaction-settings/rttransaction-settings-module').then(m => m.RTTransactionSettingsModule)
+  },
+  {path: 'transactionRoute',
+   loadChildren: () => import('./features/transaction-route/transaction-route-module').then(m => m.TransactionRouteModule)
+  },
+  {path: 'vpnsettings',
+   loadChildren: () => import('./features/vpnsettings/vpnsettings-module').then(m => m.VPNSettingsModule)
+  },
+  {path: 'x12Standard',
+   loadChildren: () => import('./features/x12-standard/x12-standard-module').then(m => m.X12StandardModule)
+  },
+  {path: 'x12Transaction',
+   loadChildren: () => import('./features/x12-transaction/x12-transaction-module').then(m => m.X12TransactionModule)
+  }
 ];
 
 @NgModule({

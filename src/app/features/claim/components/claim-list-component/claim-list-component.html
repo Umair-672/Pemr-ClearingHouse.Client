@@ -1,0 +1,59 @@
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">
+      <i class="bi bi-file-earmark-text me-2"></i>Claims</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive tbl-dashhboard">
+      <table class="table table-hover align-middle mb-0" style="table-layout: auto;">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Subscriber</th>
+            <th class="text-nowrap">Patient Control Number</th>
+            <th class="text-nowrap">Charge Amount</th>
+            <th class="text-nowrap">Place of Service</th>
+            <th class="text-nowrap">Date of Service</th>
+            <th class="text-nowrap">Referral No</th>
+            <th class="text-nowrap">Prior Authorization</th>
+            <th class="text-nowrap">Payer Control Number</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.subscriber?.firstName }} {{ item.subscriber?.lastName }}</td>
+            <td>{{ item.patientControlNumber }}</td>
+            <td>{{ item.chargeAmount | currency }}</td>
+            <td>{{ item.placeOfService }}</td>
+            <td>{{ item.dateOfService | date:'shortDate' }}</td>
+            <td>{{ item.referralNo }}</td>
+            <td>{{ item.priorAuthorization }}</td>
+            <td>{{ item.payerControlNumber }}</td>
+            <td class="text-end">
+              <button class="btn btn-icon btn-outline-secondary me-1" title="Edit" [routerLink]="['edit', item.id]">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-icon btn-outline-danger" title="Delete" (click)="openDeleteDialog(item)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="items.length === 0">
+            <td colspan="10" class="text-center py-4 text-muted">
+              <i class="fas fa-inbox fa-2x mb-2"></i>
+              <p class="mb-0">No Claims found</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="selectedItem?.patientControlNumber || 'Claim'"
+  title="Delete Claim"
+  (closed)="onDeleteDialogClosed($event)">
+</app-confirm-delete-dialog>

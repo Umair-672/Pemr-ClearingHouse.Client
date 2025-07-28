@@ -15,8 +15,6 @@ import { httpAuthInterceptor } from './core/http-auth.interceptor';
 import { Auth } from './auth/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Logout } from './auth/logout/logout';
-import { BillingPrvSecIdentification } from './features/billing-prv-sec-identification/billing-prv-sec-identification';
-import { Claim } from './features/claim/claim';
 
 
 
@@ -28,9 +26,7 @@ import { Claim } from './features/claim/claim';
     SidePanel,
     NavigatioBar,
     Auth,
-    Logout,
-    BillingPrvSecIdentification,
-    Claim,
+    Logout
   ],
   imports: [
     BrowserModule,

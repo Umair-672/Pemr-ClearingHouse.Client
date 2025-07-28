@@ -1,14 +1,9 @@
 <div>
-  <div
-    class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary custom-sidebar"
-  >
+  <div class="flex-column flex-shrink p-3">
     <a
       href="/"
       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
     >
-      <svg class="bi pe-none me-2" width="40" height="32" aria-hidden="true">
-        <use xlink:href="#bootstrap"></use>
-      </svg>
       <span class="fs-4">PEMR</span>
     </a>
     <hr />
@@ -27,34 +22,12 @@
       <li class="nav-item">
         <a
           class="nav-link d-flex align-items-center"
-          [routerLink]="'/organizations'"
+          [routerLink]="'/billingPrvSecIdentification'"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <i class="bi bi-building"></i>
-          <span class="ms-2">Organizations</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          [routerLink]="'/payer'"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="bi bi-credit-card"></i>
-          <span class="ms-2">Payers</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          [routerLink]="'/gateway'"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="bi bi-diagram-3"></i>
-          <span class="ms-2">Gateways</span>
+          <i class="bi bi-shield-lock"></i>
+          <span class="ms-2">Billing Pro Sec Identification</span>
         </a>
       </li>
       <li class="nav-item">
@@ -66,6 +39,72 @@
         >
           <i class="bi bi-briefcase"></i>
           <span class="ms-2">Billing Provider</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/claim'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-file-earmark-medical"></i>
+          <span class="ms-2">Claim</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/claimEntity'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-diagram-2"></i>
+          <span class="ms-2">Claim Entity</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/claimStatus'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-info-circle"></i>
+          <span class="ms-2">Claim Status</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/dialupSettings'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-telephone"></i>
+          <span class="ms-2">Dialup Settings</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/ftpsettings'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-hdd-network"></i>
+          <span class="ms-2">FTP Settings</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/gateway'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-diagram-3"></i>
+          <span class="ms-2">Gateways</span>
         </a>
       </li>
       <li class="nav-item">
@@ -93,6 +132,182 @@
       <li class="nav-item">
         <a
           class="nav-link d-flex align-items-center"
+          [routerLink]="'/insurance'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-shield-plus"></i>
+          <span class="ms-2">Insurance</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/insuranceCarrier'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-truck"></i>
+          <span class="ms-2">Insurance Carrier</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/interpretedResponse'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-chat-dots"></i>
+          <span class="ms-2">Interpreted Response</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/interpretedResponseField'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-chat-left-text"></i>
+          <span class="ms-2">Interpreted Response Field</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/interpretationEntity'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-collection"></i>
+          <span class="ms-2">Interpretation Entity</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/interpretationField'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-ui-checks"></i>
+          <span class="ms-2">Interpretation Field</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/organizations'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-building"></i>
+          <span class="ms-2">Organizations</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/outboundClaim'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-arrow-up-right-square"></i>
+          <span class="ms-2">Outbound Claim</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/outboundClaimFile'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-file-earmark-arrow-up"></i>
+          <span class="ms-2">Outbound Claim File</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/outboundTransaction'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-arrow-left-right"></i>
+          <span class="ms-2">Outbound Transaction</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/patient'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-person"></i>
+          <span class="ms-2">Patient</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/payer'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-credit-card"></i>
+          <span class="ms-2">Payers</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/paytoAddress'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-geo-alt"></i>
+          <span class="ms-2">Payto Address</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/responseKeyword'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-key"></i>
+          <span class="ms-2">Response Keyword</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/responseKeywordField'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-key-fill"></i>
+          <span class="ms-2">Response Keyword Field</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/rttransactionSettings'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-gear"></i>
+          <span class="ms-2">RTTransaction Settings</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
           [routerLink]="'/subscriber'"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
@@ -101,43 +316,48 @@
           <span class="ms-2">Subscriber</span>
         </a>
       </li>
-      <li>
-        <a href="#" class="nav-link link-body-emphasis">
-          <svg
-            class="bi pe-none me-2"
-            width="16"
-            height="16"
-            aria-hidden="true"
-          >
-            <use xlink:href="#table"></use>
-          </svg>
-          Orders
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/transactionRoute'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-signpost"></i>
+          <span class="ms-2">Transaction Route</span>
         </a>
       </li>
-      <li>
-        <a href="#" class="nav-link link-body-emphasis">
-          <svg
-            class="bi pe-none me-2"
-            width="16"
-            height="16"
-            aria-hidden="true"
-          >
-            <use xlink:href="#grid"></use>
-          </svg>
-          Products
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/vpnsettings'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-shield-lock"></i>
+          <span class="ms-2">VPN Settings</span>
         </a>
       </li>
-      <li>
-        <a href="#" class="nav-link link-body-emphasis">
-          <svg
-            class="bi pe-none me-2"
-            width="16"
-            height="16"
-            aria-hidden="true"
-          >
-            <use xlink:href="#people-circle"></use>
-          </svg>
-          Customers
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/x12Standard'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-file-earmark-code"></i>
+          <span class="ms-2">X12 Standard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="'/x12Transaction'"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bi bi-arrows"></i>
+          <span class="ms-2">X12 Transaction</span>
         </a>
       </li>
     </ul>

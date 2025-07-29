@@ -49,8 +49,8 @@ const routes: Routes = [
   {path: 'dialupSettings',
    loadChildren: () => import('./features/dialup-settings/dialup-settings-module').then(m => m.DialupSettingsModule)
   },
-  {path: 'ftpsettings',
-   loadChildren: () => import('./features/ftpsettings/ftpsettings-module').then(m => m.FTPSettingsModule)
+  {path: 'ftpSettings',
+   loadChildren: () => import('./features/ftp-settings/ftp-settings-module').then(m => m.FTPSettingsModule)
   },
   {path: 'insurance',
    loadChildren: () => import('./features/insurance/insurance-module').then(m => m.InsuranceModule)

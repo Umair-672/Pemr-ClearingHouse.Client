@@ -1,1 +1,9 @@
-<p>claim-entity works!</p>
+<button
+  type="button"
+  class="btn btn-primary d-flex align-items-center my-3"
+  [routerLink]="['add']"
+  routerLinkActive="router-link-active"
+>
+  <i class="bi bi-plus-circle me-2"></i>Add New ClaimEntity
+</button>
+<app-claim-entity-list-component></app-claim-entity-list-component>

@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-outbound-claim-file',
-  standalone: false,
   templateUrl: './outbound-claim-file.html',
-  styleUrl: './outbound-claim-file.scss'
+  styleUrl: './outbound-claim-file.scss',
+  standalone: false
 })
-export class OutboundClaimFile {
-
-}
+export class OutboundClaimFile {}

@@ -1,0 +1,57 @@
+<h4 class="mb-3"><i class="bi bi-arrow-left-right me-2"></i>Outbound Transactions</h4>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Outbound Transactions</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive tbl-dashhboard">
+      <table class="table table-hover align-middle mb-0" style="table-layout: auto;">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th class="text-nowrap">Outbound Claim File</th>
+            <th class="text-nowrap">Ctrl No</th>
+            <th class="text-nowrap">Version Name</th>
+            <th class="text-nowrap">Submitter Entity Type</th>
+            <th class="text-nowrap">Submitter First Name</th>
+            <th class="text-nowrap">Submitter Last Name</th>
+            <th class="text-nowrap">Submitter Identification</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.outboundClaimFile?.name }}</td>
+            <td>{{ item.ctrlNo }}</td>
+            <td>{{ item.versionName }}</td>
+            <td>{{ item.submitterEntityType }}</td>
+            <td>{{ item.submitterFirstName }}</td>
+            <td>{{ item.submitterLastName }}</td>
+            <td>{{ item.submitterIdentification }}</td>
+            <td class="text-nowrap">
+              <button class="btn btn-icon btn-outline-secondary me-1" title="Edit" [routerLink]="['edit', item.id]">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-icon btn-outline-danger" title="Delete" (click)="openDeleteDialog(item)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="items.length === 0">
+            <td colspan="9" class="text-center py-4 text-muted">
+              <i class="fas fa-inbox fa-2x mb-2"></i>
+              <p class="mb-0">No Outbound Transactions found</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="selectedItem?.ctrlNo || 'Outbound Transaction'"
+  title="Delete Outbound Transaction"
+  (closed)="onDeleteDialogClosed($event)">
+</app-confirm-delete-dialog> 

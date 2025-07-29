@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-outbound-transaction',
-  standalone: false,
   templateUrl: './outbound-transaction.html',
-  styleUrl: './outbound-transaction.scss'
+  styleUrl: './outbound-transaction.scss',
+  standalone: false
 })
-export class OutboundTransaction {
-
-}
+export class OutboundTransaction {}

@@ -20,6 +20,8 @@
             <th class="text-nowrap">ERA Dir</th>
             <th class="text-nowrap">Outbound File Type</th>
             <th class="text-nowrap">Inbound File Type</th>
+            <th class="text-nowrap">Encryption Public Key</th>
+            <th class="text-nowrap">Encryption Private Key</th>
             <th class="text-nowrap">Is Active</th>
             <th class="text-nowrap">Is Deleted</th>
             <th class="text-end">Actions</th>
@@ -39,6 +41,8 @@
             <td>{{ item.eraDir }}</td>
             <td>{{ item.outboundFileType }}</td>
             <td>{{ item.inboundFileType }}</td>
+            <td>{{ item.encryptionPublicKey }}</td>
+            <td>{{ item.encryptionPrivateKey }}</td>
             <td>
               <span class="badge" [ngClass]="{'bg-success': item.isActive, 'bg-secondary': !item.isActive}">
                 {{ item.isActive ? 'Active' : 'Inactive' }}

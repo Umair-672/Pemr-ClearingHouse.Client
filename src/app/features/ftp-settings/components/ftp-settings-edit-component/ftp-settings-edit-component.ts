@@ -24,15 +24,6 @@ export class FTPSettingsEditComponent implements OnInit {
   loading = false;
   gateways: Gateway[] = [];
 
-  gatewayDropdownConfig: DropdownConfig = {
-    displayProperty: 'name',
-    valueProperty: 'id',
-    placeholder: 'Select gateway...',
-    searchPlaceholder: 'Search and select gateway...',
-    noResultsText: 'No gateways found',
-    icon: 'bi-diagram-3',
-    maxHeight: '200px',
-  };
 
   ngOnInit(): void {
     this.itemId = this.route.snapshot.paramMap.get('id') || '';

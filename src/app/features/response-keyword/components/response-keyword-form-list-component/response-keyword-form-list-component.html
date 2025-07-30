@@ -1,0 +1,55 @@
+<h4 class="mb-3"><i class="bi bi-chat-quote me-2"></i>Response Keyword</h4>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Response Keywords</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Keyword</th>
+            <th>Interpreted Text</th>
+            <th>Status</th>
+            <th>Source ID</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (responseKeyword of responseKeywords; track responseKeyword.id) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ responseKeyword.keyword }}</td>
+              <td>{{ responseKeyword.interpretedText }}</td>
+              <td>{{ responseKeyword.status }}</td>
+              <td>{{ responseKeyword.sourceID }}</td>
+              <td class="text-end">
+                <button
+                  class="btn btn-icon btn-outline-secondary me-1"
+                  title="Edit"
+                  [routerLink]="['edit', responseKeyword.id]"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  class="btn btn-icon btn-outline-danger"
+                  title="Delete"
+                  (click)="openDeleteDialog(responseKeyword)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="selectedResponseKeyword?.keyword ?? ''"
+  title="Delete Response Keyword"
+  (closed)="onDeleteDialogClosed($event)">
+</app-confirm-delete-dialog> 

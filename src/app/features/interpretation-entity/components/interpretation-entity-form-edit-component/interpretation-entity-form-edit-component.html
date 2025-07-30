@@ -1,0 +1,50 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-collection"></i> Edit Interpretation Entity
+      </h2>
+      <form [formGroup]="interpretationEntityForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Name -->
+        <div class="form-group mb-3">
+          <label for="interpretationEntityName" class="fw-semibold mb-1">Name</label>
+          <input
+            id="interpretationEntityName"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Enter interpretation entity name"
+            required
+            [ngClass]="{'is-invalid': interpretationEntityForm.get('name')?.invalid && interpretationEntityForm.get('name')?.touched}"
+          />
+          <div *ngIf="interpretationEntityForm.get('name')?.invalid && interpretationEntityForm.get('name')?.touched" class="invalid-feedback">
+            Name is required.
+          </div>
+        </div>
+
+        <!-- Code -->
+        <div class="form-group mb-4">
+          <label for="interpretationEntityCode" class="fw-semibold mb-1">Code</label>
+          <input
+            id="interpretationEntityCode"
+            type="text"
+            class="form-control"
+            formControlName="code"
+            placeholder="Enter interpretation entity code"
+            required
+            [ngClass]="{'is-invalid': interpretationEntityForm.get('code')?.invalid && interpretationEntityForm.get('code')?.touched}"
+          />
+          <div *ngIf="interpretationEntityForm.get('code')?.invalid && interpretationEntityForm.get('code')?.touched" class="invalid-feedback">
+            Code is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="interpretationEntityForm.invalid">
+            <i class="bi bi-pencil-square me-2"></i>Edit Interpretation Entity
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

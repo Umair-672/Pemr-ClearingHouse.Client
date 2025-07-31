@@ -1,0 +1,66 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-arrows"></i> Add New X12 Transaction
+      </h2>
+      <form [formGroup]="x12TransactionForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- X12 Standard -->
+        <div class="form-group mb-3">
+          <label for="x12StandardID" class="fw-semibold mb-1">X12 Standard</label>
+          <app-searchable-dropdown
+            [options]="x12Standards"
+            [config]="x12TransactionDropdownConfig"
+            [disabled]="!x12Standards || x12Standards.length === 0"
+            [required]="true"
+            (selectionChange)="onX12StandardSelectionChange($event)"
+            [ngClass]="{'is-invalid': x12TransactionForm.get('x12StandardID')?.invalid && x12TransactionForm.get('x12StandardID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="x12TransactionForm.get('x12StandardID')?.invalid && x12TransactionForm.get('x12StandardID')?.touched" class="invalid-feedback">
+            X12 Standard is required.
+          </div>
+        </div>
+
+        <!-- Transaction -->
+        <div class="form-group mb-3">
+          <label for="x12TransactionTransaction" class="fw-semibold mb-1">Transaction</label>
+          <input
+            id="x12TransactionTransaction"
+            type="text"
+            class="form-control"
+            formControlName="transaction"
+            placeholder="Enter transaction"
+            required
+            [ngClass]="{'is-invalid': x12TransactionForm.get('transaction')?.invalid && x12TransactionForm.get('transaction')?.touched}"
+          />
+          <div *ngIf="x12TransactionForm.get('transaction')?.invalid && x12TransactionForm.get('transaction')?.touched" class="invalid-feedback">
+            Transaction is required.
+          </div>
+        </div>
+
+        <!-- Transaction Code -->
+        <div class="form-group mb-4">
+          <label for="x12TransactionTransactionCode" class="fw-semibold mb-1">Transaction Code</label>
+          <input
+            id="x12TransactionTransactionCode"
+            type="text"
+            class="form-control"
+            formControlName="transactionCode"
+            placeholder="Enter transaction code"
+            required
+            [ngClass]="{'is-invalid': x12TransactionForm.get('transactionCode')?.invalid && x12TransactionForm.get('transactionCode')?.touched}"
+          />
+          <div *ngIf="x12TransactionForm.get('transactionCode')?.invalid && x12TransactionForm.get('transactionCode')?.touched" class="invalid-feedback">
+            Transaction code is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="x12TransactionForm.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add X12 Transaction
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

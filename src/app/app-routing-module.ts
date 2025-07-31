@@ -89,13 +89,13 @@ const routes: Routes = [
    loadChildren: () => import('./features/response-keyword-field/response-keyword-field-module').then(m => m.ResponseKeywordFieldModule)
   },
   {path: 'rttransactionSettings',
-   loadChildren: () => import('./features/rttransaction-settings/rttransaction-settings-module').then(m => m.RTTransactionSettingsModule)
+   loadChildren: () => import('./features/rt-transaction-settings/rt-transaction-settings-module').then(m => m.RTTransactionSettingsModule)
   },
   {path: 'transactionRoute',
    loadChildren: () => import('./features/transaction-route/transaction-route-module').then(m => m.TransactionRouteModule)
   },
-  {path: 'vpnsettings',
-   loadChildren: () => import('./features/vpnsettings/vpnsettings-module').then(m => m.VPNSettingsModule)
+  {path: 'vpn-settings',
+   loadChildren: () => import('./features/vpn-settings/vpn-settings-module').then(m => m.VPNSettingsModule)
   },
   {path: 'x12Standard',
    loadChildren: () => import('./features/x12-standard/x12-standard-module').then(m => m.X12StandardModule)

@@ -1,0 +1,129 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-geo-alt"></i> Edit Payto Address
+      </h2>
+      <form [formGroup]="paytoAddressForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Inbound Transaction -->
+        <div class="form-group mb-3">
+          <label for="inboundTransactionID" class="fw-semibold mb-1">Inbound Transaction</label>
+          <input
+            id="inboundTransactionID"
+            class="form-control"
+            formControlName="inboundTransactionID"
+            required
+            [value]="getSelectedInboundTransactionName()"
+            [ngClass]="{'is-invalid': paytoAddressForm.get('inboundTransactionID')?.invalid && paytoAddressForm.get('inboundTransactionID')?.touched}"
+          />
+          <div *ngIf="paytoAddressForm.get('inboundTransactionID')?.invalid && paytoAddressForm.get('inboundTransactionID')?.touched" class="invalid-feedback">
+            Inbound transaction is required.
+          </div>
+        </div>
+
+        <!-- Entity Type Qualifier -->
+        <div class="form-group mb-3">
+          <label for="paytoAddressEntityTypeQualifier" class="fw-semibold mb-1">Entity Type Qualifier</label>
+          <input
+            id="paytoAddressEntityTypeQualifier"
+            type="text"
+            class="form-control"
+            formControlName="entityTypeQualifier"
+            placeholder="Enter entity type qualifier"
+            required
+            [ngClass]="{'is-invalid': paytoAddressForm.get('entityTypeQualifier')?.invalid && paytoAddressForm.get('entityTypeQualifier')?.touched}"
+          />
+          <div *ngIf="paytoAddressForm.get('entityTypeQualifier')?.invalid && paytoAddressForm.get('entityTypeQualifier')?.touched" class="invalid-feedback">
+            Entity type qualifier is required.
+          </div>
+        </div>
+
+        <!-- Address 1 -->
+        <div class="form-group mb-3">
+          <label for="paytoAddressAddress1" class="fw-semibold mb-1">Address 1</label>
+          <input
+            id="paytoAddressAddress1"
+            type="text"
+            class="form-control"
+            formControlName="address1"
+            placeholder="Enter address 1"
+            required
+            [ngClass]="{'is-invalid': paytoAddressForm.get('address1')?.invalid && paytoAddressForm.get('address1')?.touched}"
+          />
+          <div *ngIf="paytoAddressForm.get('address1')?.invalid && paytoAddressForm.get('address1')?.touched" class="invalid-feedback">
+            Address 1 is required.
+          </div>
+        </div>
+
+        <!-- Address 2 -->
+        <div class="form-group mb-3">
+          <label for="paytoAddressAddress2" class="fw-semibold mb-1">Address 2</label>
+          <input
+            id="paytoAddressAddress2"
+            type="text"
+            class="form-control"
+            formControlName="address2"
+            placeholder="Enter address 2"
+          />
+        </div>
+
+        <!-- City -->
+        <div class="form-group mb-3">
+          <label for="paytoAddressCity" class="fw-semibold mb-1">City</label>
+          <input
+            id="paytoAddressCity"
+            type="text"
+            class="form-control"
+            formControlName="city"
+            placeholder="Enter city"
+            required
+            [ngClass]="{'is-invalid': paytoAddressForm.get('city')?.invalid && paytoAddressForm.get('city')?.touched}"
+          />
+          <div *ngIf="paytoAddressForm.get('city')?.invalid && paytoAddressForm.get('city')?.touched" class="invalid-feedback">
+            City is required.
+          </div>
+        </div>
+
+        <!-- State -->
+        <div class="form-group mb-3">
+          <label for="paytoAddressState" class="fw-semibold mb-1">State</label>
+          <input
+            id="paytoAddressState"
+            type="text"
+            class="form-control"
+            formControlName="state"
+            placeholder="Enter state"
+            required
+            [ngClass]="{'is-invalid': paytoAddressForm.get('state')?.invalid && paytoAddressForm.get('state')?.touched}"
+          />
+          <div *ngIf="paytoAddressForm.get('state')?.invalid && paytoAddressForm.get('state')?.touched" class="invalid-feedback">
+            State is required.
+          </div>
+        </div>
+
+        <!-- Zip Code -->
+        <div class="form-group mb-3">
+          <label for="paytoAddressZipCode" class="fw-semibold mb-1">Zip Code</label>
+          <input
+            id="paytoAddressZipCode"
+            type="text"
+            class="form-control"
+            formControlName="zipCode"
+            placeholder="Enter zip code"
+            required
+            [ngClass]="{'is-invalid': paytoAddressForm.get('zipCode')?.invalid && paytoAddressForm.get('zipCode')?.touched}"
+          />
+          <div *ngIf="paytoAddressForm.get('zipCode')?.invalid && paytoAddressForm.get('zipCode')?.touched" class="invalid-feedback">
+            Zip code is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="paytoAddressForm.invalid">
+            <i class="bi bi-pencil-square me-2"></i>Edit Payto Address
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 

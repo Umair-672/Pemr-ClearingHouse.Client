@@ -1,0 +1,83 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-gear-wide-connected"></i> Add New RT Transaction Settings
+      </h2>
+      <form [formGroup]="rtTransactionSettingsForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Transaction Route -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteID" class="fw-semibold mb-1">Transaction Route</label>
+          <app-searchable-dropdown
+            [options]="transactionRoutes"
+            [config]="transactionRouteDropdownConfig"
+            [disabled]="!transactionRoutes || transactionRoutes.length === 0"
+            [required]="true"
+            (selectionChange)="onTransactionRouteSelectionChange($event)"
+            [ngClass]="{'is-invalid': rtTransactionSettingsForm.get('transactionRouteID')?.invalid && rtTransactionSettingsForm.get('transactionRouteID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="rtTransactionSettingsForm.get('transactionRouteID')?.invalid && rtTransactionSettingsForm.get('transactionRouteID')?.touched" class="invalid-feedback">
+            Transaction route is required.
+          </div>
+        </div>
+
+        <!-- URI -->
+        <div class="form-group mb-3">
+          <label for="rtTransactionSettingsURI" class="fw-semibold mb-1">URI</label>
+          <input
+            id="rtTransactionSettingsURI"
+            type="text"
+            class="form-control"
+            formControlName="uri"
+            placeholder="Enter URI"
+            required
+            [ngClass]="{'is-invalid': rtTransactionSettingsForm.get('uri')?.invalid && rtTransactionSettingsForm.get('uri')?.touched}"
+          />
+          <div *ngIf="rtTransactionSettingsForm.get('uri')?.invalid && rtTransactionSettingsForm.get('uri')?.touched" class="invalid-feedback">
+            URI is required.
+          </div>
+        </div>
+
+        <!-- User Name -->
+        <div class="form-group mb-3">
+          <label for="rtTransactionSettingsUserName" class="fw-semibold mb-1">User Name</label>
+          <input
+            id="rtTransactionSettingsUserName"
+            type="text"
+            class="form-control"
+            formControlName="userName"
+            placeholder="Enter user name"
+            required
+            [ngClass]="{'is-invalid': rtTransactionSettingsForm.get('userName')?.invalid && rtTransactionSettingsForm.get('userName')?.touched}"
+          />
+          <div *ngIf="rtTransactionSettingsForm.get('userName')?.invalid && rtTransactionSettingsForm.get('userName')?.touched" class="invalid-feedback">
+            User name is required.
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group mb-3">
+          <label for="rtTransactionSettingsPassword" class="fw-semibold mb-1">Password</label>
+          <input
+            id="rtTransactionSettingsPassword"
+            type="text"
+            class="form-control"
+            formControlName="password"
+            placeholder="Enter password"
+            required
+            [ngClass]="{'is-invalid': rtTransactionSettingsForm.get('password')?.invalid && rtTransactionSettingsForm.get('password')?.touched}"
+          />
+          <div *ngIf="rtTransactionSettingsForm.get('password')?.invalid && rtTransactionSettingsForm.get('password')?.touched" class="invalid-feedback">
+            Password is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="rtTransactionSettingsForm.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add RT Transaction Settings
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 

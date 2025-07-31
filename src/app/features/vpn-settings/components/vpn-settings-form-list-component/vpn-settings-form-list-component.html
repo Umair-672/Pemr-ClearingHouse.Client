@@ -1,0 +1,69 @@
+<h4 class="mb-3"><i class="bi bi-shield-lock me-2"></i>VPN Settings</h4>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">VPN Settings</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Gateway</th>
+            <th>Connection Name</th>
+            <th>IP Address</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Status</th>
+            <th>Deleted</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vpnSettings of vpnSettings; track vpnSettings.id) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ vpnSettings.gateway?.name || 'N/A' }}</td>
+              <td>{{ vpnSettings.connectionName }}</td>
+              <td>{{ vpnSettings.ipAddress }}</td>
+              <td>{{ vpnSettings.userName }}</td>
+              <td>{{ vpnSettings.password }}</td>
+              <td>
+                <span class="badge" [ngClass]="vpnSettings.isActive ? 'bg-success' : 'bg-secondary'">
+                  {{ vpnSettings.isActive ? 'Active' : 'Inactive' }}
+                </span>
+              </td>
+              <td>
+                <span class="badge" [ngClass]="vpnSettings.isDeleted ? 'bg-danger' : 'bg-success'">
+                  {{ vpnSettings.isDeleted ? 'Deleted' : 'Not Deleted' }}
+                </span>
+              </td>
+              <td class="text-end">
+                <button
+                  class="btn btn-icon btn-outline-secondary me-1"
+                  title="Edit"
+                  [routerLink]="['edit', vpnSettings.id]"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  class="btn btn-icon btn-outline-danger"
+                  title="Delete"
+                  (click)="openDeleteDialog(vpnSettings)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="selectedVPNSettings?.connectionName ?? ''"
+  title="Delete VPN Settings"
+  (closed)="onDeleteDialogClosed($event)">
+</app-confirm-delete-dialog>

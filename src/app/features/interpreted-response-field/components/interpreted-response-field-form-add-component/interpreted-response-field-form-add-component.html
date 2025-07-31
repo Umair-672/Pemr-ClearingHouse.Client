@@ -1,0 +1,48 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-chat-left-text"></i> Add New Interpreted Response Field
+      </h2>
+      <form [formGroup]="interpretedResponseFieldForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Interpreted Response -->
+        <div class="form-group mb-3">
+          <label for="interpretedResponseID" class="fw-semibold mb-1">Interpreted Response</label>
+          <app-searchable-dropdown
+            [options]="interpretedResponses"
+            [config]="interpretedResponseDropdownConfig"
+            [disabled]="!interpretedResponses || interpretedResponses.length === 0"
+            [required]="true"
+            (selectionChange)="onInterpretedResponseSelectionChange($event)"
+            [ngClass]="{'is-invalid': interpretedResponseFieldForm.get('interpretedResponseID')?.invalid && interpretedResponseFieldForm.get('interpretedResponseID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="interpretedResponseFieldForm.get('interpretedResponseID')?.invalid && interpretedResponseFieldForm.get('interpretedResponseID')?.touched" class="invalid-feedback">
+            Interpreted response is required.
+          </div>
+        </div>
+
+        <!-- Interpretation Field -->
+        <div class="form-group mb-3">
+          <label for="interpretationFieldID" class="fw-semibold mb-1">Interpretation Field</label>
+          <app-searchable-dropdown
+            [options]="interpretationFields"
+            [config]="interpretationFieldDropdownConfig"
+            [disabled]="!interpretationFields || interpretationFields.length === 0"
+            [required]="true"
+            (selectionChange)="onInterpretationFieldSelectionChange($event)"
+            [ngClass]="{'is-invalid': interpretedResponseFieldForm.get('interpretationFieldID')?.invalid && interpretedResponseFieldForm.get('interpretationFieldID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="interpretedResponseFieldForm.get('interpretationFieldID')?.invalid && interpretedResponseFieldForm.get('interpretationFieldID')?.touched" class="invalid-feedback">
+            Interpretation field is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="interpretedResponseFieldForm.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add Interpreted Response Field
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

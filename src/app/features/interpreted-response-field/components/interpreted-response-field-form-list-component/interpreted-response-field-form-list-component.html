@@ -1,0 +1,51 @@
+<h4 class="mb-3"><i class="bi bi-chat-left-text me-2"></i>Interpreted Response Field</h4>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Interpreted Response Fields</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Interpreted Response</th>
+            <th>Interpretation Field</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (interpretedResponseField of interpretedResponseFields; track interpretedResponseField.id) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ interpretedResponseField.interpretedResponse?.interpretedText || 'N/A' }}</td>
+              <td>{{ interpretedResponseField.interpretationField?.name || 'N/A' }}</td>
+              <td class="text-end">
+                <button
+                  class="btn btn-icon btn-outline-secondary me-1"
+                  title="Edit"
+                  [routerLink]="['edit', interpretedResponseField.id]"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  class="btn btn-icon btn-outline-danger"
+                  title="Delete"
+                  (click)="openDeleteDialog(interpretedResponseField)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="selectedInterpretedResponseField?.interpretedResponse?.interpretedText ?? ''"
+  title="Delete Interpreted Response Field"
+  (closed)="onDeleteDialogClosed($event)">
+</app-confirm-delete-dialog>

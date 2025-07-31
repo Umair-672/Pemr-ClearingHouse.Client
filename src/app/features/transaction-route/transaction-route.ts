@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-transaction-route',
-  standalone: false,
   templateUrl: './transaction-route.html',
-  styleUrl: './transaction-route.scss'
+  styleUrl: './transaction-route.scss',
+  standalone: false
 })
-export class TransactionRoute {
-
-}
+export class TransactionRoute {}

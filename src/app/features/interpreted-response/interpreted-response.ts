@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-interpreted-response',
-  standalone: false,
   templateUrl: './interpreted-response.html',
-  styleUrl: './interpreted-response.scss'
+  styleUrl: './interpreted-response.scss',
+  standalone: false
 })
-export class InterpretedResponse {
-
-}
+export class InterpretedResponse {}

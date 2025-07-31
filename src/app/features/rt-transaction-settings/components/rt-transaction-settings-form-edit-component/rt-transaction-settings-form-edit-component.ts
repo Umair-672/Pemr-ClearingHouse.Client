@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RTTransactionSettingsService } from '../../service/rt-transaction-settings-service';
+
 import { RTTransactionSettings } from '../../model/rt-transaction-settings.model';
 import { TransactionRoute } from '../../../transaction-route/model/transaction-route.model';
 import { TransactionRouteService } from '../../../transaction-route/service/transaction-route-service';
+
 
 @Component({
   selector: 'app-rt-transaction-settings-form-edit-component',

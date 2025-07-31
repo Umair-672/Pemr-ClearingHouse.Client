@@ -90,7 +90,7 @@ export class InterpretedResponseFormAddComponent implements OnInit {
       this.interpretedResponseService.create(interpretedResponse).subscribe({
         next: () => {
           this.interpretedResponseForm.reset();
-          this.router.navigate(['/interpreted-response']);
+          this.router.navigate(['/interpretedResponse']);
         },
         error: (err) => {
           console.error('Error adding interpreted response:', err);
@@ -100,4 +100,4 @@ export class InterpretedResponseFormAddComponent implements OnInit {
       this.interpretedResponseForm.markAllAsTouched();
     }
   }
-} 
+}

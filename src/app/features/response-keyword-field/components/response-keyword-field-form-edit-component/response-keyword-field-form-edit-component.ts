@@ -74,7 +74,7 @@ export class ResponseKeywordFieldFormEditComponent implements OnInit {
       const updatedResponseKeywordField = this.responseKeywordFieldForm.value;
       this.responseKeywordFieldService.update(this.responseKeywordFieldId, updatedResponseKeywordField).subscribe({
         next: () => {
-          this.router.navigate(['/response-keyword-field']);
+          this.router.navigate(['/responseKeywordField']);
         },
         error: (err) => {
           console.error('Error updating response keyword field:', err);
@@ -84,4 +84,4 @@ export class ResponseKeywordFieldFormEditComponent implements OnInit {
       this.responseKeywordFieldForm.markAllAsTouched();
     }
   }
-} 
+}

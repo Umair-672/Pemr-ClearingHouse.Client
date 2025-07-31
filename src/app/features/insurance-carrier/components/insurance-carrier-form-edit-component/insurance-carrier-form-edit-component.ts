@@ -90,7 +90,7 @@ export class InsuranceCarrierFormEditComponent implements OnInit {
       const updatedInsuranceCarrier = this.insuranceCarrierForm.value;
       this.insuranceCarrierService.update(this.insuranceCarrierId, updatedInsuranceCarrier).subscribe({
         next: () => {
-          this.router.navigate(['/insurance-carrier']);
+          this.router.navigate(['/insuranceCarrier']);
         },
         error: (err) => {
           console.error('Error updating insurance carrier:', err);
@@ -100,4 +100,4 @@ export class InsuranceCarrierFormEditComponent implements OnInit {
       this.insuranceCarrierForm.markAllAsTouched();
     }
   }
-} 
+}

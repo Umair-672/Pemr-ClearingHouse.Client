@@ -61,7 +61,7 @@ export class InterpretationFieldFormEditComponent implements OnInit {
       const updatedInterpretationField = this.interpretationFieldForm.value;
       this.interpretationFieldService.update(this.interpretationFieldId, updatedInterpretationField).subscribe({
         next: () => {
-          this.router.navigate(['/interpretation-field']);
+          this.router.navigate(['/interpretationField']);
         },
         error: (err) => {
           console.error('Error updating interpretation field:', err);
@@ -71,4 +71,4 @@ export class InterpretationFieldFormEditComponent implements OnInit {
       this.interpretationFieldForm.markAllAsTouched();
     }
   }
-} 
+}

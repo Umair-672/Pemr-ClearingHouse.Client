@@ -20,7 +20,7 @@
           @for (rtTransactionSettings of rtTransactionSettings; track rtTransactionSettings.id) {
             <tr>
               <td>{{ $index + 1 }}</td>
-              <td>{{ rtTransactionSettings.transactionRoute?.name || 'N/A' }}</td>
+              <td>{{ rtTransactionSettings.transactionRoute?.authInfo}}</td>
               <td>{{ rtTransactionSettings.uri }}</td>
               <td>{{ rtTransactionSettings.userName }}</td>
               <td>{{ rtTransactionSettings.password }}</td>
@@ -52,4 +52,4 @@
   [entityName]="selectedRTTransactionSettings?.uri ?? ''"
   title="Delete RT Transaction Settings"
   (closed)="onDeleteDialogClosed($event)">
-</app-confirm-delete-dialog> 
+</app-confirm-delete-dialog>

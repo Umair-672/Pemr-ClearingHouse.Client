@@ -65,7 +65,7 @@ export class PaytoAddressFormEditComponent implements OnInit {
       const updatedPaytoAddress = this.paytoAddressForm.value;
       this.paytoAddressService.update(this.paytoAddressId, updatedPaytoAddress).subscribe({
         next: () => {
-          this.router.navigate(['/payto-address']);
+          this.router.navigate(['/paytoAddress']);
         },
         error: (err) => {
           console.error('Error updating payto address:', err);

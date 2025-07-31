@@ -104,7 +104,7 @@ export class InsuranceCarrierFormAddComponent implements OnInit {
       this.insuranceCarrierService.create(insuranceCarrier).subscribe({
         next: () => {
           this.insuranceCarrierForm.reset();
-          this.router.navigate(['/insurance-carrier']);
+          this.router.navigate(['/insuranceCarrier']);
         },
         error: (err) => {
           console.error('Error adding insurance carrier:', err);
@@ -114,4 +114,4 @@ export class InsuranceCarrierFormAddComponent implements OnInit {
       this.insuranceCarrierForm.markAllAsTouched();
     }
   }
-} 
+}

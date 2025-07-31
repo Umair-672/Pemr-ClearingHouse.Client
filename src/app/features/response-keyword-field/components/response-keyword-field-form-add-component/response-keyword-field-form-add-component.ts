@@ -88,7 +88,7 @@ export class ResponseKeywordFieldFormAddComponent implements OnInit {
       this.responseKeywordFieldService.create(responseKeywordField).subscribe({
         next: () => {
           this.responseKeywordFieldForm.reset();
-          this.router.navigate(['/response-keyword-field']);
+          this.router.navigate(['/responseKeywordField']);
         },
         error: (err) => {
           console.error('Error adding response keyword field:', err);
@@ -98,4 +98,4 @@ export class ResponseKeywordFieldFormAddComponent implements OnInit {
       this.responseKeywordFieldForm.markAllAsTouched();
     }
   }
-} 
+}

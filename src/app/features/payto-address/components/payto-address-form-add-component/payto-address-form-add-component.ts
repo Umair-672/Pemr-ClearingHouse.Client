@@ -65,7 +65,7 @@ export class PaytoAddressFormAddComponent implements OnInit {
       this.paytoAddressService.create(paytoAddress).subscribe({
         next: () => {
           this.paytoAddressForm.reset();
-          this.router.navigate(['/payto-address']);
+          this.router.navigate(['/paytoAddress']);
         },
         error: (err) => {
           console.error('Error adding payto address:', err);

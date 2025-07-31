@@ -103,7 +103,7 @@ export class TransactionRouteFormEditComponent implements OnInit {
       const updatedTransactionRoute = this.transactionRouteForm.value;
       this.transactionRouteService.update(this.transactionRouteId, updatedTransactionRoute).subscribe({
         next: () => {
-          this.router.navigate(['/transaction-route']);
+          this.router.navigate(['/transactionRoute']);
         },
         error: (err) => {
           console.error('Error updating transaction route:', err);
@@ -113,4 +113,4 @@ export class TransactionRouteFormEditComponent implements OnInit {
       this.transactionRouteForm.markAllAsTouched();
     }
   }
-} 
+}

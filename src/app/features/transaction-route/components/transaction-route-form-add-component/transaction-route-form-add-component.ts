@@ -131,7 +131,7 @@ export class TransactionRouteFormAddComponent implements OnInit {
       this.transactionRouteService.create(transactionRoute).subscribe({
         next: () => {
           this.transactionRouteForm.reset();
-          this.router.navigate(['/transaction-route']);
+          this.router.navigate(['/transactionRoute']);
         },
         error: (err) => {
           console.error('Error adding transaction route:', err);
@@ -141,4 +141,4 @@ export class TransactionRouteFormAddComponent implements OnInit {
       this.transactionRouteForm.markAllAsTouched();
     }
   }
-} 
+}

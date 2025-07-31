@@ -88,7 +88,7 @@ export class InterpretedResponseFieldFormAddComponent implements OnInit {
       this.interpretedResponseFieldService.create(interpretedResponseField).subscribe({
         next: () => {
           this.interpretedResponseFieldForm.reset();
-          this.router.navigate(['/interpreted-response-field']);
+          this.router.navigate(['/interpretedResponseField']);
         },
         error: (err) => {
           console.error('Error adding interpreted response field:', err);
@@ -98,4 +98,4 @@ export class InterpretedResponseFieldFormAddComponent implements OnInit {
       this.interpretedResponseFieldForm.markAllAsTouched();
     }
   }
-} 
+}

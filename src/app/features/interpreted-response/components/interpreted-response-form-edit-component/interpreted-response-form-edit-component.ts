@@ -76,7 +76,7 @@ export class InterpretedResponseFormEditComponent implements OnInit {
       const updatedInterpretedResponse = this.interpretedResponseForm.value;
       this.interpretedResponseService.update(this.interpretedResponseId, updatedInterpretedResponse).subscribe({
         next: () => {
-          this.router.navigate(['/interpreted-response']);
+          this.router.navigate(['/interpretedResponse']);
         },
         error: (err) => {
           console.error('Error updating interpreted response:', err);
@@ -86,4 +86,4 @@ export class InterpretedResponseFormEditComponent implements OnInit {
       this.interpretedResponseForm.markAllAsTouched();
     }
   }
-} 
+}

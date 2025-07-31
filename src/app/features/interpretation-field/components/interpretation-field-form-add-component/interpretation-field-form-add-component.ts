@@ -61,7 +61,7 @@ export class InterpretationFieldFormAddComponent implements OnInit {
       this.interpretationFieldService.create(interpretationField).subscribe({
         next: () => {
           this.interpretationFieldForm.reset();
-          this.router.navigate(['/interpretation-field']);
+          this.router.navigate(['/interpretationField']);
         },
         error: (err) => {
           console.error('Error adding interpretation field:', err);
@@ -71,4 +71,4 @@ export class InterpretationFieldFormAddComponent implements OnInit {
       this.interpretationFieldForm.markAllAsTouched();
     }
   }
-} 
+}

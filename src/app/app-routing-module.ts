@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {path: 'dashboard',
    loadChildren: () => import('./features/dashboard/dashboard-module').then(m => m.DashboardModule),
-    canActivate: [AuthGuard]
+   canActivate: [AuthGuard]
   },
   {path: 'payer',
    loadChildren: () => import('./features/payer/payer-module').then(m => m.PayerModule)

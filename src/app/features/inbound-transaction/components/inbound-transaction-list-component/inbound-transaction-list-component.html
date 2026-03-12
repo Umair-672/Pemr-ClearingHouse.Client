@@ -1,0 +1,83 @@
+<h4 class="mb-3"><i class="bi bi-arrow-left-right me-2"></i>Inbound Transaction</h4>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Inbound Transactions</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive tbl-dashhboard">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <!-- <th scope="col" class="text-nowrap">InboundTransaction Id</th> -->
+            <th scope="col" class="text-nowrap">inboundClaimFile</th>
+            <th scope="col" class="text-nowrap">Control No</th>
+            <th scope="col" class="text-nowrap">Version Name</th>
+            <th scope="col" class="text-nowrap">Submitter Entity Type</th>
+            <th scope="col" class="text-nowrap">Submitter First Name</th>
+            <th scope="col" class="text-nowrap">Submitter Last Name</th>
+            <th scope="col" class="text-nowrap">
+              Submitter Identification Code
+            </th>
+            <th scope="col" class="text-nowrap">Submitter Contact Name</th>
+            <th scope="col" class="text-nowrap">Submitter Phone No</th>
+            <th scope="col" class="text-nowrap">Inbound Fax No</th>
+            <th scope="col" class="text-nowrap">Submitter Email</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (transaction of inboundTransactions; track transaction.id) {
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <!-- <td>{{ transaction.id }}</td> -->
+            <td>{{ transaction.inboundClaimFile?.name }}</td>
+            <td>{{ transaction.ctrlNo }}</td>
+            <td>{{ transaction.versionName }}</td>
+            <td>{{ transaction.submitterEntityType }}</td>
+            <td>{{ transaction.submitterFirstName }}</td>
+            <td>{{ transaction.submitterLastName }}</td>
+            <td>{{ transaction.submitterIdentificationCode }}</td>
+            <td>{{ transaction.submitterContactName }}</td>
+            <td>{{ transaction.submitterPhoneNo }}</td>
+            <td>{{ transaction.submitterFaxNo }}</td>
+            <td>{{ transaction.submitterEmail }}</td>
+            <td class="text-end text-nowrap">
+              <button
+                class="btn btn-icon btn-outline-secondary me-1"
+                title="Edit Transaction"
+                [routerLink]="['edit', transaction.id]"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button
+                class="btn btn-icon btn-outline-danger"
+                (click)="openDeleteDialog(transaction)"
+                title="Delete Transaction"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          } @empty {
+          <tr>
+            <td colspan="13" class="text-center py-4 text-muted">
+              <i class="fas fa-inbox fa-2x mb-2"></i>
+              <p class="mb-0">No inbound transactions found</p>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation Dialog -->
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="selectedTransaction?.versionName || ''"
+  title="Delete inbound transaction"
+  (closed)="onDeleteDialogClosed($event)"
+>
+</app-confirm-delete-dialog>

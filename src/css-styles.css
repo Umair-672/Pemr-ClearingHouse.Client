@@ -18,6 +18,9 @@
   min-height: calc(100vh - 56px - 56px); /* header + footer */
   box-sizing: border-box;
 }
+.tbl-dashhboard {
+  width: calc(78vw - 10px) !important;
+}
 
 
 .fixed-sidebar {

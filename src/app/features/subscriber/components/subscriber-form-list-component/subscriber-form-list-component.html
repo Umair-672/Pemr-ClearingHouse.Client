@@ -1,0 +1,89 @@
+<h4 class="mb-3"><i class="bi bi-person-badge me-2"></i>Subscriber</h4>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Subscribers</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive tbl-dashhboard">
+      <table class="table table-hover align-middle mb-0" style="table-layout: auto;">
+        <thead class="table-light">
+  <tr>
+    <th scope="col" class="text-nowrap">#</th>
+    <th scope="col" class="text-nowrap">Billing Provider</th>
+    <th scope="col" class="text-nowrap">First Name</th>
+    <th scope="col" class="text-nowrap">Last Name</th>
+    <th scope="col" class="text-nowrap">Middle Name</th>
+    <th scope="col" class="text-nowrap">Primary ID</th>
+    <th scope="col" class="text-nowrap">Secondary ID</th>
+    <th scope="col" class="text-nowrap">Payer Resp.</th>
+    <th scope="col" class="text-nowrap">Relationship</th>
+    <th scope="col" class="text-nowrap">Insurance Type</th>
+    <th scope="col" class="text-nowrap">Claim Filing</th>
+    <th scope="col" class="text-nowrap">Gender</th>
+    <th>DOB</th>
+    <th scope="col" class="text-nowrap">Address 1</th>
+    <th scope="col" class="text-nowrap">Address 2</th>
+    <th scope="col" class="text-nowrap">City</th>
+    <th scope="col" class="text-nowrap">State</th>
+    <th scope="col" class="text-nowrap">Zip Code</th>
+    <th scope="col" class="text-end text-nowrap">Actions</th>
+  </tr>
+</thead>
+
+        <tbody>
+          @for (subscriber of subscribers; track subscriber.id) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ subscriber.billingProvider?.entityTypeQualifier }}</td>
+              <td>{{ subscriber.firstName }}</td>
+              <td>{{ subscriber.lastName }}</td>
+              <td>{{ subscriber.middleName }}</td>
+              <td>{{ subscriber.primaryIdentification }}</td>
+              <td>{{ subscriber.secondaryIdentification }}</td>
+              <td>{{ subscriber.payerResponsibility }}</td>
+              <td>{{ subscriber.relationshipCode }}</td>
+              <td>{{ subscriber.insuranceTypeCode }}</td>
+              <td>{{ subscriber.claimFilingIndicator }}</td>
+              <td>{{ subscriber.gender }}</td>
+              <td>{{ subscriber.dob | date:'yyyy-MM-dd' }}</td>
+              <td>{{ subscriber.address1 }}</td>
+              <td>{{ subscriber.address2 }}</td>
+              <td>{{ subscriber.city }}</td>
+              <td>{{ subscriber.state }}</td>
+              <td>{{ subscriber.zipCode }}</td>
+              <td class="text-end text-nowrap">
+                <button
+                  class="btn btn-icon btn-outline-secondary me-1"
+                  title="Edit"
+                  [routerLink]="['edit', subscriber.id]"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  class="btn btn-icon btn-outline-danger"
+                  title="Delete"
+                  (click)="openDeleteDialog(subscriber)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }@empty {
+            <tr>
+              <td colspan="13" class="text-center py-4 text-muted">
+                <i class="fas fa-inbox fa-2x mb-2"></i>
+                <p class="mb-0">No Subscriber found</p>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="(selectedSubscriber?.firstName || '') + ' ' + (selectedSubscriber?.lastName || '')"
+  title="Delete Subscriber"
+  (closed)="onDeleteDialogClosed($event)">
+</app-confirm-delete-dialog>

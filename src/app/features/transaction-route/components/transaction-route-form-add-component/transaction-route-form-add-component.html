@@ -1,0 +1,300 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-signpost"></i> Add New Transaction Route
+      </h2>
+      <form [formGroup]="transactionRouteForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Insurance Carrier -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierID" class="fw-semibold mb-1">Insurance Carrier</label>
+          <app-searchable-dropdown
+            [options]="insuranceCarriers"
+            [config]="insuranceCarrierDropdownConfig"
+            [disabled]="!insuranceCarriers || insuranceCarriers.length === 0"
+            [required]="true"
+            (selectionChange)="onInsuranceCarrierSelectionChange($event)"
+            [ngClass]="{'is-invalid': transactionRouteForm.get('insuranceCarrierID')?.invalid && transactionRouteForm.get('insuranceCarrierID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="transactionRouteForm.get('insuranceCarrierID')?.invalid && transactionRouteForm.get('insuranceCarrierID')?.touched" class="invalid-feedback">
+            Insurance carrier is required.
+          </div>
+        </div>
+
+        <!-- X12 Transaction -->
+        <div class="form-group mb-3">
+          <label for="x12TransactionID" class="fw-semibold mb-1">X12 Transaction</label>
+          <app-searchable-dropdown
+            [options]="x12Transactions"
+            [config]="x12TransactionDropdownConfig"
+            [disabled]="!x12Transactions || x12Transactions.length === 0"
+            [required]="true"
+            (selectionChange)="onX12TransactionSelectionChange($event)"
+            [ngClass]="{'is-invalid': transactionRouteForm.get('x12TransactionID')?.invalid && transactionRouteForm.get('x12TransactionID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="transactionRouteForm.get('x12TransactionID')?.invalid && transactionRouteForm.get('x12TransactionID')?.touched" class="invalid-feedback">
+            X12 transaction is required.
+          </div>
+        </div>
+
+        <!-- Gateway -->
+        <div class="form-group mb-3">
+          <label for="gatewayID" class="fw-semibold mb-1">Gateway</label>
+          <app-searchable-dropdown
+            [options]="gateways"
+            [config]="gatewayDropdownConfig"
+            [disabled]="!gateways || gateways.length === 0"
+            [required]="true"
+            (selectionChange)="onGatewaySelectionChange($event)"
+            [ngClass]="{'is-invalid': transactionRouteForm.get('gatewayID')?.invalid && transactionRouteForm.get('gatewayID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="transactionRouteForm.get('gatewayID')?.invalid && transactionRouteForm.get('gatewayID')?.touched" class="invalid-feedback">
+            Gateway is required.
+          </div>
+        </div>
+
+        <!-- Auth Info -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteAuthInfo" class="fw-semibold mb-1">Auth Info</label>
+          <input
+            id="transactionRouteAuthInfo"
+            type="text"
+            class="form-control"
+            formControlName="authInfo"
+            placeholder="Enter auth info"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('authInfo')?.invalid && transactionRouteForm.get('authInfo')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('authInfo')?.invalid && transactionRouteForm.get('authInfo')?.touched" class="invalid-feedback">
+            Auth info is required.
+          </div>
+        </div>
+
+        <!-- Security Info -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteSecurityInfo" class="fw-semibold mb-1">Security Info</label>
+          <input
+            id="transactionRouteSecurityInfo"
+            type="text"
+            class="form-control"
+            formControlName="securityInfo"
+            placeholder="Enter security info"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('securityInfo')?.invalid && transactionRouteForm.get('securityInfo')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('securityInfo')?.invalid && transactionRouteForm.get('securityInfo')?.touched" class="invalid-feedback">
+            Security info is required.
+          </div>
+        </div>
+
+        <!-- Submitter Qualifier -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteSubmitterQualifier" class="fw-semibold mb-1">Submitter Qualifier</label>
+          <input
+            id="transactionRouteSubmitterQualifier"
+            type="text"
+            class="form-control"
+            formControlName="submitterQualifier"
+            placeholder="Enter submitter qualifier"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('submitterQualifier')?.invalid && transactionRouteForm.get('submitterQualifier')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('submitterQualifier')?.invalid && transactionRouteForm.get('submitterQualifier')?.touched" class="invalid-feedback">
+            Submitter qualifier is required.
+          </div>
+        </div>
+
+        <!-- Submitter ID -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteSubmitterID" class="fw-semibold mb-1">Submitter ID</label>
+          <input
+            id="transactionRouteSubmitterID"
+            type="text"
+            class="form-control"
+            formControlName="submitterID"
+            placeholder="Enter submitter ID"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('submitterID')?.invalid && transactionRouteForm.get('submitterID')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('submitterID')?.invalid && transactionRouteForm.get('submitterID')?.touched" class="invalid-feedback">
+            Submitter ID is required.
+          </div>
+        </div>
+
+        <!-- Receiver Qualifier -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteReceiverQualifier" class="fw-semibold mb-1">Receiver Qualifier</label>
+          <input
+            id="transactionRouteReceiverQualifier"
+            type="text"
+            class="form-control"
+            formControlName="receiverQualifier"
+            placeholder="Enter receiver qualifier"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('receiverQualifier')?.invalid && transactionRouteForm.get('receiverQualifier')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('receiverQualifier')?.invalid && transactionRouteForm.get('receiverQualifier')?.touched" class="invalid-feedback">
+            Receiver qualifier is required.
+          </div>
+        </div>
+
+        <!-- Receiver ID -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteReceiverID" class="fw-semibold mb-1">Receiver ID</label>
+          <input
+            id="transactionRouteReceiverID"
+            type="text"
+            class="form-control"
+            formControlName="receiverID"
+            placeholder="Enter receiver ID"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('receiverID')?.invalid && transactionRouteForm.get('receiverID')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('receiverID')?.invalid && transactionRouteForm.get('receiverID')?.touched" class="invalid-feedback">
+            Receiver ID is required.
+          </div>
+        </div>
+
+        <!-- Sender Code -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteSenderCode" class="fw-semibold mb-1">Sender Code</label>
+          <input
+            id="transactionRouteSenderCode"
+            type="text"
+            class="form-control"
+            formControlName="senderCode"
+            placeholder="Enter sender code"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('senderCode')?.invalid && transactionRouteForm.get('senderCode')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('senderCode')?.invalid && transactionRouteForm.get('senderCode')?.touched" class="invalid-feedback">
+            Sender code is required.
+          </div>
+        </div>
+
+        <!-- Receiver Code -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteReceiverCode" class="fw-semibold mb-1">Receiver Code</label>
+          <input
+            id="transactionRouteReceiverCode"
+            type="text"
+            class="form-control"
+            formControlName="receiverCode"
+            placeholder="Enter receiver code"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('receiverCode')?.invalid && transactionRouteForm.get('receiverCode')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('receiverCode')?.invalid && transactionRouteForm.get('receiverCode')?.touched" class="invalid-feedback">
+            Receiver code is required.
+          </div>
+        </div>
+
+        <!-- Receiver Name -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteReceiverName" class="fw-semibold mb-1">Receiver Name</label>
+          <input
+            id="transactionRouteReceiverName"
+            type="text"
+            class="form-control"
+            formControlName="receiverName"
+            placeholder="Enter receiver name"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('receiverName')?.invalid && transactionRouteForm.get('receiverName')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('receiverName')?.invalid && transactionRouteForm.get('receiverName')?.touched" class="invalid-feedback">
+            Receiver name is required.
+          </div>
+        </div>
+
+        <!-- Receiver Primary Identifier -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteReceiverPrimaryIdentifier" class="fw-semibold mb-1">Receiver Primary Identifier</label>
+          <input
+            id="transactionRouteReceiverPrimaryIdentifier"
+            type="text"
+            class="form-control"
+            formControlName="receiverPrimaryIdentifier"
+            placeholder="Enter receiver primary identifier"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('receiverPrimaryIdentifier')?.invalid && transactionRouteForm.get('receiverPrimaryIdentifier')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('receiverPrimaryIdentifier')?.invalid && transactionRouteForm.get('receiverPrimaryIdentifier')?.touched" class="invalid-feedback">
+            Receiver primary identifier is required.
+          </div>
+        </div>
+
+        <!-- Outbound Payer ID -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteOutboundPayerID" class="fw-semibold mb-1">Outbound Payer ID</label>
+          <input
+            id="transactionRouteOutboundPayerID"
+            type="text"
+            class="form-control"
+            formControlName="outboundPayerID"
+            placeholder="Enter outbound payer ID"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('outboundPayerID')?.invalid && transactionRouteForm.get('outboundPayerID')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('outboundPayerID')?.invalid && transactionRouteForm.get('outboundPayerID')?.touched" class="invalid-feedback">
+            Outbound payer ID is required.
+          </div>
+        </div>
+
+        <!-- Inbound Payer ID -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteInboundPayerID" class="fw-semibold mb-1">Inbound Payer ID</label>
+          <input
+            id="transactionRouteInboundPayerID"
+            type="text"
+            class="form-control"
+            formControlName="inboundPayerID"
+            placeholder="Enter inbound payer ID"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('inboundPayerID')?.invalid && transactionRouteForm.get('inboundPayerID')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('inboundPayerID')?.invalid && transactionRouteForm.get('inboundPayerID')?.touched" class="invalid-feedback">
+            Inbound payer ID is required.
+          </div>
+        </div>
+
+        <!-- Connection Mode -->
+        <div class="form-group mb-3">
+          <label for="transactionRouteConnectionMode" class="fw-semibold mb-1">Connection Mode</label>
+          <input
+            id="transactionRouteConnectionMode"
+            type="text"
+            class="form-control"
+            formControlName="connectionMode"
+            placeholder="Enter connection mode"
+            required
+            [ngClass]="{'is-invalid': transactionRouteForm.get('connectionMode')?.invalid && transactionRouteForm.get('connectionMode')?.touched}"
+          />
+          <div *ngIf="transactionRouteForm.get('connectionMode')?.invalid && transactionRouteForm.get('connectionMode')?.touched" class="invalid-feedback">
+            Connection mode is required.
+          </div>
+        </div>
+
+        <!-- Is Preferred -->
+        <div class="form-group mb-3">
+          <div class="form-check">
+            <input
+              id="transactionRouteIsPreferred"
+              type="checkbox"
+              class="form-check-input"
+              formControlName="isPreferred"
+            />
+            <label class="form-check-label fw-semibold" for="transactionRouteIsPreferred">
+              Is Preferred
+            </label>
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="transactionRouteForm.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add Transaction Route
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

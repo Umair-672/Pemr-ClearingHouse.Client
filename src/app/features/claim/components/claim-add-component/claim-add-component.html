@@ -1,0 +1,146 @@
+<div class="container py-4">
+  <div class="row justify-content">
+    <div class="col-md-8 col-lg-7">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-file-earmark-plus"></i> Add New Claim
+      </h2>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+      >
+        <div class="form-group mb-3">
+          <label for="subscriberID" class="fw-semibold mb-1"
+            >Subscriber</label
+          >
+          <app-searchable-dropdown
+            [options]="subscribers"
+            [config]="subscriberDropdownConfig"
+            [disabled]="!subscribers || subscribers.length === 0"
+            [required]="true"
+            (selectionChange)="onSubscriberSelectionChange($event)"
+            [ngClass]="{'is-invalid': form.get('subscriberID')?.invalid && form.get('subscriberID')?.touched}"
+          ></app-searchable-dropdown>
+          <div
+            *ngIf="form.get('subscriberID')?.invalid && form.get('subscriberID')?.touched"
+            class="invalid-feedback"
+          >
+            Subscriber is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="patientControlNumber" class="fw-semibold mb-1">Patient Control Number</label>
+          <input
+            id="patientControlNumber"
+            type="text"
+            class="form-control"
+            formControlName="patientControlNumber"
+            required
+            [ngClass]="{'is-invalid': form.get('patientControlNumber')?.invalid && form.get('patientControlNumber')?.touched}"
+            placeholder="Enter patient control number"
+          />
+          <div
+            *ngIf="form.get('patientControlNumber')?.invalid && form.get('patientControlNumber')?.touched"
+            class="invalid-feedback"
+          >
+            Patient Control Number is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="chargeAmount" class="fw-semibold mb-1">Charge Amount</label>
+          <input
+            id="chargeAmount"
+            type="number"
+            step="0.01"
+            class="form-control"
+            formControlName="chargeAmount"
+            required
+            [ngClass]="{'is-invalid': form.get('chargeAmount')?.invalid && form.get('chargeAmount')?.touched}"
+            placeholder="Enter charge amount"
+          />
+          <div
+            *ngIf="form.get('chargeAmount')?.invalid && form.get('chargeAmount')?.touched"
+            class="invalid-feedback"
+          >
+            Charge Amount is required and must be a valid number.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="placeOfService" class="fw-semibold mb-1">Place of Service</label>
+          <input
+            id="placeOfService"
+            type="text"
+            class="form-control"
+            formControlName="placeOfService"
+            required
+            [ngClass]="{'is-invalid': form.get('placeOfService')?.invalid && form.get('placeOfService')?.touched}"
+            placeholder="Enter place of service"
+          />
+          <div
+            *ngIf="form.get('placeOfService')?.invalid && form.get('placeOfService')?.touched"
+            class="invalid-feedback"
+          >
+            Place of Service is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="dateOfService" class="fw-semibold mb-1">Date of Service</label>
+          <input
+            id="dateOfService"
+            type="date"
+            class="form-control"
+            formControlName="dateOfService"
+            required
+            [ngClass]="{'is-invalid': form.get('dateOfService')?.invalid && form.get('dateOfService')?.touched}"
+            placeholder="Select date of service"
+          />
+          <div
+            *ngIf="form.get('dateOfService')?.invalid && form.get('dateOfService')?.touched"
+            class="invalid-feedback"
+          >
+            Date of Service is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="referralNo" class="fw-semibold mb-1">Referral Number</label>
+          <input
+            id="referralNo"
+            type="text"
+            class="form-control"
+            formControlName="referralNo"
+            placeholder="Enter referral number"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="priorAuthorization" class="fw-semibold mb-1">Prior Authorization</label>
+          <input
+            id="priorAuthorization"
+            type="text"
+            class="form-control"
+            formControlName="priorAuthorization"
+            placeholder="Enter prior authorization"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="payerControlNumber" class="fw-semibold mb-1">Payer Control Number</label>
+          <input
+            id="payerControlNumber"
+            type="text"
+            class="form-control"
+            formControlName="payerControlNumber"
+            placeholder="Enter payer control number"
+          />
+        </div>
+        <div class="d-grid">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            <i class="bi bi-plus-circle me-2"></i>Add Claim
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 

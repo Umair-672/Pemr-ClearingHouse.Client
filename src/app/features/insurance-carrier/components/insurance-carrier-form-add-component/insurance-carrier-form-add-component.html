@@ -1,0 +1,281 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-truck"></i> Add New Insurance Carrier
+      </h2>
+      <form [formGroup]="insuranceCarrierForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Insurance -->
+        <div class="form-group mb-3">
+          <label for="insuranceID" class="fw-semibold mb-1">Insurance</label>
+          <app-searchable-dropdown
+            [options]="insurances"
+            [config]="insuranceDropdownConfig"
+            [disabled]="!insurances || insurances.length === 0"
+            [required]="true"
+            (selectionChange)="onInsuranceSelectionChange($event)"
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('insuranceID')?.invalid && insuranceCarrierForm.get('insuranceID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="insuranceCarrierForm.get('insuranceID')?.invalid && insuranceCarrierForm.get('insuranceID')?.touched" class="invalid-feedback">
+            Insurance is required.
+          </div>
+        </div>
+
+        <!-- Dialup Setting -->
+        <div class="form-group mb-3">
+          <label for="dialupSettingID" class="fw-semibold mb-1">Dialup Setting</label>
+          <app-searchable-dropdown
+            [options]="dialupSettings"
+            [config]="dialupSettingsDropdownConfig"
+            [disabled]="!dialupSettings || dialupSettings.length === 0"
+            [required]="true"
+            (selectionChange)="onDialupSettingSelectionChange($event)"
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('dialupSettingID')?.invalid && insuranceCarrierForm.get('dialupSettingID')?.touched}"
+          ></app-searchable-dropdown>
+          <div *ngIf="insuranceCarrierForm.get('dialupSettingID')?.invalid && insuranceCarrierForm.get('dialupSettingID')?.touched" class="invalid-feedback">
+            Dialup setting is required.
+          </div>
+        </div>
+
+        <!-- Display Name -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierDisplayName" class="fw-semibold mb-1">Display Name</label>
+          <input
+            id="insuranceCarrierDisplayName"
+            type="text"
+            class="form-control"
+            formControlName="displayName"
+            placeholder="Enter display name"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('displayName')?.invalid && insuranceCarrierForm.get('displayName')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('displayName')?.invalid && insuranceCarrierForm.get('displayName')?.touched" class="invalid-feedback">
+            Display name is required.
+          </div>
+        </div>
+
+        <!-- Address 1 -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierAddress1" class="fw-semibold mb-1">Address 1</label>
+          <input
+            id="insuranceCarrierAddress1"
+            type="text"
+            class="form-control"
+            formControlName="address1"
+            placeholder="Enter address 1"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('address1')?.invalid && insuranceCarrierForm.get('address1')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('address1')?.invalid && insuranceCarrierForm.get('address1')?.touched" class="invalid-feedback">
+            Address 1 is required.
+          </div>
+        </div>
+
+        <!-- Address 2 -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierAddress2" class="fw-semibold mb-1">Address 2</label>
+          <input
+            id="insuranceCarrierAddress2"
+            type="text"
+            class="form-control"
+            formControlName="address2"
+            placeholder="Enter address 2"
+          />
+        </div>
+
+        <!-- City -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierCity" class="fw-semibold mb-1">City</label>
+          <input
+            id="insuranceCarrierCity"
+            type="text"
+            class="form-control"
+            formControlName="city"
+            placeholder="Enter city"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('city')?.invalid && insuranceCarrierForm.get('city')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('city')?.invalid && insuranceCarrierForm.get('city')?.touched" class="invalid-feedback">
+            City is required.
+          </div>
+        </div>
+
+        <!-- State -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierState" class="fw-semibold mb-1">State</label>
+          <input
+            id="insuranceCarrierState"
+            type="text"
+            class="form-control"
+            formControlName="state"
+            placeholder="Enter state"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('state')?.invalid && insuranceCarrierForm.get('state')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('state')?.invalid && insuranceCarrierForm.get('state')?.touched" class="invalid-feedback">
+            State is required.
+          </div>
+        </div>
+
+        <!-- Zip Code -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierZipCode" class="fw-semibold mb-1">Zip Code</label>
+          <input
+            id="insuranceCarrierZipCode"
+            type="text"
+            class="form-control"
+            formControlName="zipCode"
+            placeholder="Enter zip code"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('zipCode')?.invalid && insuranceCarrierForm.get('zipCode')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('zipCode')?.invalid && insuranceCarrierForm.get('zipCode')?.touched" class="invalid-feedback">
+            Zip code is required.
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierPhone" class="fw-semibold mb-1">Phone</label>
+          <input
+            id="insuranceCarrierPhone"
+            type="text"
+            class="form-control"
+            formControlName="phone"
+            placeholder="Enter phone"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('phone')?.invalid && insuranceCarrierForm.get('phone')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('phone')?.invalid && insuranceCarrierForm.get('phone')?.touched" class="invalid-feedback">
+            Phone is required.
+          </div>
+        </div>
+
+        <!-- Fax -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierFax" class="fw-semibold mb-1">Fax</label>
+          <input
+            id="insuranceCarrierFax"
+            type="text"
+            class="form-control"
+            formControlName="fax"
+            placeholder="Enter fax"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierEmail" class="fw-semibold mb-1">Email</label>
+          <input
+            id="insuranceCarrierEmail"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Enter email"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('email')?.invalid && insuranceCarrierForm.get('email')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('email')?.invalid && insuranceCarrierForm.get('email')?.touched" class="invalid-feedback">
+            Email is required.
+          </div>
+        </div>
+
+        <!-- URL -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierURL" class="fw-semibold mb-1">URL</label>
+          <input
+            id="insuranceCarrierURL"
+            type="url"
+            class="form-control"
+            formControlName="url"
+            placeholder="Enter URL"
+          />
+        </div>
+
+        <!-- Claim Filing Limit -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierClaimFilingLimit" class="fw-semibold mb-1">Claim Filing Limit</label>
+          <input
+            id="insuranceCarrierClaimFilingLimit"
+            type="number"
+            class="form-control"
+            formControlName="claimFilingLimit"
+            placeholder="Enter claim filing limit"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('claimFilingLimit')?.invalid && insuranceCarrierForm.get('claimFilingLimit')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('claimFilingLimit')?.invalid && insuranceCarrierForm.get('claimFilingLimit')?.touched" class="invalid-feedback">
+            Claim filing limit is required.
+          </div>
+        </div>
+
+        <!-- Appeal Filing Limit -->
+        <div class="form-group mb-3">
+          <label for="insuranceCarrierAppealFilingLimit" class="fw-semibold mb-1">Appeal Filing Limit</label>
+          <input
+            id="insuranceCarrierAppealFilingLimit"
+            type="number"
+            class="form-control"
+            formControlName="appealFilingLimit"
+            placeholder="Enter appeal filing limit"
+            required
+            [ngClass]="{'is-invalid': insuranceCarrierForm.get('appealFilingLimit')?.invalid && insuranceCarrierForm.get('appealFilingLimit')?.touched}"
+          />
+          <div *ngIf="insuranceCarrierForm.get('appealFilingLimit')?.invalid && insuranceCarrierForm.get('appealFilingLimit')?.touched" class="invalid-feedback">
+            Appeal filing limit is required.
+          </div>
+        </div>
+
+        <!-- Accept Secondary Claim -->
+        <div class="form-check mb-3">
+          <input
+            id="insuranceCarrierAcceptSecondaryClaim"
+            type="checkbox"
+            class="form-check-input"
+            formControlName="acceptSecondaryClaim"
+          />
+          <label for="insuranceCarrierAcceptSecondaryClaim" class="form-check-label fw-semibold">Accept Secondary Claim</label>
+        </div>
+
+        <!-- Accept Corrected Claim -->
+        <div class="form-check mb-3">
+          <input
+            id="insuranceCarrierAcceptCorrectedClaim"
+            type="checkbox"
+            class="form-check-input"
+            formControlName="acceptCorrectedClaim"
+          />
+          <label for="insuranceCarrierAcceptCorrectedClaim" class="form-check-label fw-semibold">Accept Corrected Claim</label>
+        </div>
+
+        <!-- Is Active -->
+        <div class="form-check mb-3">
+          <input
+            id="insuranceCarrierIsActive"
+            type="checkbox"
+            class="form-check-input"
+            formControlName="isActive"
+          />
+          <label for="insuranceCarrierIsActive" class="form-check-label fw-semibold">Active</label>
+        </div>
+
+        <!-- Is Deleted -->
+        <div class="form-check mb-4">
+          <input
+            id="insuranceCarrierIsDeleted"
+            type="checkbox"
+            class="form-check-input"
+            formControlName="isDeleted"
+          />
+          <label for="insuranceCarrierIsDeleted" class="form-check-label fw-semibold">Deleted</label>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="insuranceCarrierForm.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add Insurance Carrier
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

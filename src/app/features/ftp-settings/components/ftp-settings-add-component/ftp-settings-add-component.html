@@ -1,0 +1,105 @@
+<div class="container py-4">
+  <div class="row justify-content">
+    <div class="col-md-10 col-lg-9">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-file-earmark-plus"></i> Add New FTP Setting
+      </h2>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+      >
+        <div class="form-group mb-3">
+          <label for="gatewayID" class="fw-semibold mb-1">Gateway</label>
+          <app-searchable-dropdown
+            [options]="gateways"
+            [config]="gatewayDropdownConfig"
+            [disabled]="!gateways || gateways.length === 0"
+            [required]="true"
+            (selectionChange)="onGatewaySelectionChange($event)"
+            [ngClass]="{'is-invalid': form.get('gatewayID')?.invalid && form.get('gatewayID')?.touched}"
+          ></app-searchable-dropdown>
+          <div
+            *ngIf="form.get('gatewayID')?.invalid && form.get('gatewayID')?.touched"
+            class="invalid-feedback"
+          >
+            Gateway is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="submitterID" class="fw-semibold mb-1">Submitter ID</label>
+          <input type="text" class="form-control" id="submitterID" formControlName="submitterID" placeholder="Enter Submitter ID" [ngClass]="{'is-invalid': form.get('submitterID')?.invalid && form.get('submitterID')?.touched}" />
+          <div *ngIf="form.get('submitterID')?.invalid && form.get('submitterID')?.touched" class="invalid-feedback">Submitter ID is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="url" class="fw-semibold mb-1">URL</label>
+          <input type="text" class="form-control" id="url" formControlName="url" placeholder="Enter URL" [ngClass]="{'is-invalid': form.get('url')?.invalid && form.get('url')?.touched}" />
+          <div *ngIf="form.get('url')?.invalid && form.get('url')?.touched" class="invalid-feedback">URL is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="userName" class="fw-semibold mb-1">User Name</label>
+          <input type="text" class="form-control" id="userName" formControlName="userName" placeholder="Enter User Name" [ngClass]="{'is-invalid': form.get('userName')?.invalid && form.get('userName')?.touched}" />
+          <div *ngIf="form.get('userName')?.invalid && form.get('userName')?.touched" class="invalid-feedback">User Name is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="password" class="fw-semibold mb-1">Password</label>
+          <input type="test" class="form-control" id="password" formControlName="password" placeholder="Enter Password" [ngClass]="{'is-invalid': form.get('password')?.invalid && form.get('password')?.touched}" />
+          <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="invalid-feedback">Password is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="claimDir" class="fw-semibold mb-1">Claim Dir</label>
+          <input type="text" class="form-control" id="claimDir" formControlName="claimDir" placeholder="Enter Claim Dir" [ngClass]="{'is-invalid': form.get('claimDir')?.invalid && form.get('claimDir')?.touched}" />
+          <div *ngIf="form.get('claimDir')?.invalid && form.get('claimDir')?.touched" class="invalid-feedback">Claim Dir is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="claimStatusDir" class="fw-semibold mb-1">Claim Status Dir</label>
+          <input type="text" class="form-control" id="claimStatusDir" formControlName="claimStatusDir" placeholder="Enter Claim Status Dir" [ngClass]="{'is-invalid': form.get('claimStatusDir')?.invalid && form.get('claimStatusDir')?.touched}" />
+          <div *ngIf="form.get('claimStatusDir')?.invalid && form.get('claimStatusDir')?.touched" class="invalid-feedback">Claim Status Dir is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="eligibilityDir" class="fw-semibold mb-1">Eligibility Dir</label>
+          <input type="text" class="form-control" id="eligibilityDir" formControlName="eligibilityDir" placeholder="Enter Eligibility Dir" [ngClass]="{'is-invalid': form.get('eligibilityDir')?.invalid && form.get('eligibilityDir')?.touched}" />
+          <div *ngIf="form.get('eligibilityDir')?.invalid && form.get('eligibilityDir')?.touched" class="invalid-feedback">Eligibility Dir is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="eraDir" class="fw-semibold mb-1">ERA Dir</label>
+          <input type="text" class="form-control" id="eraDir" formControlName="eraDir" placeholder="Enter ERA Dir" [ngClass]="{'is-invalid': form.get('eraDir')?.invalid && form.get('eraDir')?.touched}" />
+          <div *ngIf="form.get('eraDir')?.invalid && form.get('eraDir')?.touched" class="invalid-feedback">ERA Dir is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="outboundFileType" class="fw-semibold mb-1">Outbound File Type</label>
+          <input type="text" class="form-control" id="outboundFileType" formControlName="outboundFileType" placeholder="Enter Outbound File Type" [ngClass]="{'is-invalid': form.get('outboundFileType')?.invalid && form.get('outboundFileType')?.touched}" />
+          <div *ngIf="form.get('outboundFileType')?.invalid && form.get('outboundFileType')?.touched" class="invalid-feedback">Outbound File Type is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="inboundFileType" class="fw-semibold mb-1">Inbound File Type</label>
+          <input type="text" class="form-control" id="inboundFileType" formControlName="inboundFileType" placeholder="Enter Inbound File Type" [ngClass]="{'is-invalid': form.get('inboundFileType')?.invalid && form.get('inboundFileType')?.touched}" />
+          <div *ngIf="form.get('inboundFileType')?.invalid && form.get('inboundFileType')?.touched" class="invalid-feedback">Inbound File Type is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="encryptionPublicKey" class="fw-semibold mb-1">Encryption Public Key</label>
+          <input type="text" class="form-control" id="encryptionPublicKey" formControlName="encryptionPublicKey" placeholder="Enter Encryption Public Key" [ngClass]="{'is-invalid': form.get('encryptionPublicKey')?.invalid && form.get('encryptionPublicKey')?.touched}" />
+          <div *ngIf="form.get('encryptionPublicKey')?.invalid && form.get('encryptionPublicKey')?.touched" class="invalid-feedback">Encryption Public Key is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="encryptionPrivateKey" class="fw-semibold mb-1">Encryption Private Key</label>
+          <input type="text" class="form-control" id="encryptionPrivateKey" formControlName="encryptionPrivateKey" placeholder="Enter Encryption Private Key" [ngClass]="{'is-invalid': form.get('encryptionPrivateKey')?.invalid && form.get('encryptionPrivateKey')?.touched}" />
+          <div *ngIf="form.get('encryptionPrivateKey')?.invalid && form.get('encryptionPrivateKey')?.touched" class="invalid-feedback">Encryption Private Key is required.</div>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="ftpSettingsIsActive" formControlName="isActive">
+          <label class="form-check-label fw-semibold" for="ftpSettingsIsActive">Is Active</label>
+        </div>
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="ftpSettingsIsDeleted" formControlName="isDeleted"/>
+          <label class="form-check-label fw-semibold" for="ftpSettingsIsDeleted">Is Deleted</label>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add FTP Setting
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 

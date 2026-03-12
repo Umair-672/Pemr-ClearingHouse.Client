@@ -1,0 +1,143 @@
+<div class="container py-4">
+  <div class="row justify-content">
+    <div class="col-md-8 col-lg-7">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-file-earmark-plus"></i> Add New Outbound Transaction
+      </h2>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+      >
+        <div class="form-group mb-3">
+          <label for="outboundClaimFileID" class="fw-semibold mb-1">Outbound Claim File</label>
+          <app-searchable-dropdown
+            [options]="outboundClaimFiles"
+            [config]="outboundClaimFileDropdownConfig"
+            [disabled]="!outboundClaimFiles || outboundClaimFiles.length === 0"
+            [required]="true"
+            (selectionChange)="onOutboundClaimFileSelectionChange($event)"
+            [ngClass]="{'is-invalid': form.get('outboundClaimFileID')?.invalid && form.get('outboundClaimFileID')?.touched}"
+          ></app-searchable-dropdown>
+          <div
+            *ngIf="form.get('outboundClaimFileID')?.invalid && form.get('outboundClaimFileID')?.touched"
+            class="invalid-feedback"
+          >
+            Outbound Claim File is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="ctrlNo" class="fw-semibold mb-1">Ctrl No</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ctrlNo"
+            formControlName="ctrlNo"
+            placeholder="Enter Ctrl No"
+            [ngClass]="{'is-invalid': form.get('ctrlNo')?.invalid && form.get('ctrlNo')?.touched}"
+          />
+          <div
+            *ngIf="form.get('ctrlNo')?.invalid && form.get('ctrlNo')?.touched"
+            class="invalid-feedback"
+          >
+            Ctrl No is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="versionName" class="fw-semibold mb-1">Version Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="versionName"
+            formControlName="versionName"
+            placeholder="Enter Version Name"
+            [ngClass]="{'is-invalid': form.get('versionName')?.invalid && form.get('versionName')?.touched}"
+          />
+          <div
+            *ngIf="form.get('versionName')?.invalid && form.get('versionName')?.touched"
+            class="invalid-feedback"
+          >
+            Version Name is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="submitterEntityType" class="fw-semibold mb-1">Submitter Entity Type</label>
+          <input
+            type="text"
+            class="form-control"
+            id="submitterEntityType"
+            formControlName="submitterEntityType"
+            placeholder="Enter Submitter Entity Type"
+            [ngClass]="{'is-invalid': form.get('submitterEntityType')?.invalid && form.get('submitterEntityType')?.touched}"
+          />
+          <div
+            *ngIf="form.get('submitterEntityType')?.invalid && form.get('submitterEntityType')?.touched"
+            class="invalid-feedback"
+          >
+            Submitter Entity Type is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="submitterFirstName" class="fw-semibold mb-1">Submitter First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="submitterFirstName"
+            formControlName="submitterFirstName"
+            placeholder="Enter Submitter First Name"
+            [ngClass]="{'is-invalid': form.get('submitterFirstName')?.invalid && form.get('submitterFirstName')?.touched}"
+          />
+          <div
+            *ngIf="form.get('submitterFirstName')?.invalid && form.get('submitterFirstName')?.touched"
+            class="invalid-feedback"
+          >
+            Submitter First Name is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="submitterLastName" class="fw-semibold mb-1">Submitter Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="submitterLastName"
+            formControlName="submitterLastName"
+            placeholder="Enter Submitter Last Name"
+            [ngClass]="{'is-invalid': form.get('submitterLastName')?.invalid && form.get('submitterLastName')?.touched}"
+          />
+          <div
+            *ngIf="form.get('submitterLastName')?.invalid && form.get('submitterLastName')?.touched"
+            class="invalid-feedback"
+          >
+            Submitter Last Name is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="submitterIdentification" class="fw-semibold mb-1">Submitter Identification</label>
+          <input
+            type="text"
+            class="form-control"
+            id="submitterIdentification"
+            formControlName="submitterIdentification"
+            placeholder="Enter Submitter Identification"
+            [ngClass]="{'is-invalid': form.get('submitterIdentification')?.invalid && form.get('submitterIdentification')?.touched}"
+          />
+          <div
+            *ngIf="form.get('submitterIdentification')?.invalid && form.get('submitterIdentification')?.touched"
+            class="invalid-feedback"
+          >
+            Submitter Identification is required.
+          </div>
+        </div>
+        <div class="d-grid">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            <i class="bi bi-plus-circle me-2"></i>Add Outbound Transaction
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,53 @@
+<h4 class="mb-3"><i class="bi bi-arrows me-2"></i>X12 Transaction</h4>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">X12 Transactions</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>X12 Standard</th>
+            <th>Transaction</th>
+            <th>Transaction Code</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (x12Transaction of x12Transactions; track x12Transaction.id) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ x12Transaction.x12Standard?.name || 'N/A' }}</td>
+              <td>{{ x12Transaction.transaction }}</td>
+              <td>{{ x12Transaction.transactionCode }}</td>
+              <td class="text-end">
+                <button
+                  class="btn btn-icon btn-outline-secondary me-1"
+                  title="Edit"
+                  [routerLink]="['edit', x12Transaction.id]"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  class="btn btn-icon btn-outline-danger"
+                  title="Delete"
+                  (click)="openDeleteDialog(x12Transaction)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="selectedX12Transaction?.transaction ?? ''"
+  title="Delete X12 Transaction"
+  (closed)="onDeleteDialogClosed($event)">
+</app-confirm-delete-dialog>

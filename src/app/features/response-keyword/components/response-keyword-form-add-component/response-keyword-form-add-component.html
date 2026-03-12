@@ -1,0 +1,84 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-key"></i> Add New Response Keyword
+      </h2>
+      <form [formGroup]="responseKeywordForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Keyword -->
+        <div class="form-group mb-3">
+          <label for="responseKeywordKeyword" class="fw-semibold mb-1">Keyword</label>
+          <input
+            id="responseKeywordKeyword"
+            type="text"
+            class="form-control"
+            formControlName="keyword"
+            placeholder="Enter keyword"
+            required
+            [ngClass]="{'is-invalid': responseKeywordForm.get('keyword')?.invalid && responseKeywordForm.get('keyword')?.touched}"
+          />
+          <div *ngIf="responseKeywordForm.get('keyword')?.invalid && responseKeywordForm.get('keyword')?.touched" class="invalid-feedback">
+            Keyword is required.
+          </div>
+        </div>
+
+        <!-- Interpreted Text -->
+        <div class="form-group mb-3">
+          <label for="responseKeywordInterpretedText" class="fw-semibold mb-1">Interpreted Text</label>
+          <textarea
+            id="responseKeywordInterpretedText"
+            class="form-control"
+            formControlName="interpretedText"
+            placeholder="Enter interpreted text"
+            rows="3"
+            required
+            [ngClass]="{'is-invalid': responseKeywordForm.get('interpretedText')?.invalid && responseKeywordForm.get('interpretedText')?.touched}"
+          ></textarea>
+          <div *ngIf="responseKeywordForm.get('interpretedText')?.invalid && responseKeywordForm.get('interpretedText')?.touched" class="invalid-feedback">
+            Interpreted text is required.
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="form-group mb-3">
+          <label for="responseKeywordStatus" class="fw-semibold mb-1">Status</label>
+          <input
+            id="responseKeywordStatus"
+            type="text"
+            class="form-control"
+            formControlName="status"
+            placeholder="Enter status"
+            required
+            [ngClass]="{'is-invalid': responseKeywordForm.get('status')?.invalid && responseKeywordForm.get('status')?.touched}"
+          />
+          <div *ngIf="responseKeywordForm.get('status')?.invalid && responseKeywordForm.get('status')?.touched" class="invalid-feedback">
+            Status is required.
+          </div>
+        </div>
+
+        <!-- Source ID -->
+        <div class="form-group mb-4">
+          <label for="responseKeywordSourceID" class="fw-semibold mb-1">Source ID</label>
+          <input
+            id="responseKeywordSourceID"
+            type="text"
+            class="form-control"
+            formControlName="sourceID"
+            placeholder="Enter source ID"
+            required
+            [ngClass]="{'is-invalid': responseKeywordForm.get('sourceID')?.invalid && responseKeywordForm.get('sourceID')?.touched}"
+          />
+          <div *ngIf="responseKeywordForm.get('sourceID')?.invalid && responseKeywordForm.get('sourceID')?.touched" class="invalid-feedback">
+            Source ID is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="responseKeywordForm.invalid">
+            <i class="bi bi-plus-circle me-2"></i>Add Response Keyword
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

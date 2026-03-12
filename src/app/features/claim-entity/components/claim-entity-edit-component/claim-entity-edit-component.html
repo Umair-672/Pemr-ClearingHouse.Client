@@ -1,0 +1,101 @@
+<div class="container py-4">
+  <div class="row justify-content">
+    <div class="col-md-8 col-lg-7">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-pencil-square"></i> Edit Claim Entity
+      </h2>
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        *ngIf="!loading"
+      >
+        <div class="form-group mb-3">
+          <label for="claimID" class="fw-semibold mb-1">Claim</label>
+          <input
+            id="claimID"
+            class="form-control"
+            formControlName="claimID"
+            required
+            [ngClass]="{
+              'is-invalid':
+                form.get('claimID')?.invalid && form.get('claimID')?.touched
+            }"
+            placeholder="Select claim..."/>
+          <div
+            *ngIf="form.get('claimID')?.invalid && form.get('claimID')?.touched"
+            class="invalid-feedback"
+          >
+            Claim is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="entityCode" class="fw-semibold mb-1">Entity Code</label>
+          <input id="entityCode" type="text" class="form-control" formControlName="entityCode" required [ngClass]="{'is-invalid': form.get('entityCode')?.invalid && form.get('entityCode')?.touched}" placeholder="Enter entity code" />
+          <div *ngIf="form.get('entityCode')?.invalid && form.get('entityCode')?.touched" class="invalid-feedback">Entity Code is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="entityTypeQualifier" class="fw-semibold mb-1">Entity Type Qualifier</label>
+          <input id="entityTypeQualifier" type="text" class="form-control" formControlName="entityTypeQualifier" required [ngClass]="{'is-invalid': form.get('entityTypeQualifier')?.invalid && form.get('entityTypeQualifier')?.touched}" placeholder="Enter entity type qualifier" />
+          <div *ngIf="form.get('entityTypeQualifier')?.invalid && form.get('entityTypeQualifier')?.touched" class="invalid-feedback">Entity Type Qualifier is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="firstName" class="fw-semibold mb-1">First Name</label>
+          <input id="firstName" type="text" class="form-control" formControlName="firstName" required [ngClass]="{'is-invalid': form.get('firstName')?.invalid && form.get('firstName')?.touched}" placeholder="Enter first name" />
+          <div *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched" class="invalid-feedback">First Name is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="lastName" class="fw-semibold mb-1">Last Name</label>
+          <input id="lastName" type="text" class="form-control" formControlName="lastName" required [ngClass]="{'is-invalid': form.get('lastName')?.invalid && form.get('lastName')?.touched}" placeholder="Enter last name" />
+          <div *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched" class="invalid-feedback">Last Name is required.</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="middleName" class="fw-semibold mb-1">Middle Name</label>
+          <input id="middleName" type="text" class="form-control" formControlName="middleName" placeholder="Enter middle name" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="address1" class="fw-semibold mb-1">Address 1</label>
+          <input id="address1" type="text" class="form-control" formControlName="address1" placeholder="Enter address 1" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="address2" class="fw-semibold mb-1">Address 2</label>
+          <input id="address2" type="text" class="form-control" formControlName="address2" placeholder="Enter address 2" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="city" class="fw-semibold mb-1">City</label>
+          <input id="city" type="text" class="form-control" formControlName="city" placeholder="Enter city" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="state" class="fw-semibold mb-1">State</label>
+          <input id="state" type="text" class="form-control" formControlName="state" placeholder="Enter state" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="zipCode" class="fw-semibold mb-1">Zip Code</label>
+          <input id="zipCode" type="text" class="form-control" formControlName="zipCode" placeholder="Enter zip code" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="primaryIdentification" class="fw-semibold mb-1">Primary Identification</label>
+          <input id="primaryIdentification" type="text" class="form-control" formControlName="primaryIdentification" placeholder="Enter primary identification" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="secondaryIdentification" class="fw-semibold mb-1">Secondary Identification</label>
+          <input id="secondaryIdentification" type="text" class="form-control" formControlName="secondaryIdentification" placeholder="Enter secondary identification" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="taxonomyCode" class="fw-semibold mb-1">Taxonomy Code</label>
+          <input id="taxonomyCode" type="text" class="form-control" formControlName="taxonomyCode" placeholder="Enter taxonomy code" />
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+            <i class="bi bi-check-circle me-2"></i>Update Claim Entity
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

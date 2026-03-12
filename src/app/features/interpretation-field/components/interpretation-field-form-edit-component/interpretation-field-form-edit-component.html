@@ -1,0 +1,66 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-ui-checks"></i> Edit Interpretation Field
+      </h2>
+      <form [formGroup]="interpretationFieldForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Interpretation Entity -->
+        <div class="form-group mb-3">
+          <label for="interpretationEntityID" class="fw-semibold mb-1">Interpretation Entity</label>
+          <input
+            id="interpretationEntityID"
+            class="form-control"
+            formControlName="interpretationEntityID"
+            required
+            [value]="getSelectedInterpretationEntityName()"
+            [ngClass]="{'is-invalid': interpretationFieldForm.get('interpretationEntityID')?.invalid && interpretationFieldForm.get('interpretationEntityID')?.touched}"
+          />
+          <div *ngIf="interpretationFieldForm.get('interpretationEntityID')?.invalid && interpretationFieldForm.get('interpretationEntityID')?.touched" class="invalid-feedback">
+            Interpretation entity is required.
+          </div>
+        </div>
+
+        <!-- Name -->
+        <div class="form-group mb-3">
+          <label for="interpretationFieldName" class="fw-semibold mb-1">Name</label>
+          <input
+            id="interpretationFieldName"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Enter name"
+            required
+            [ngClass]="{'is-invalid': interpretationFieldForm.get('name')?.invalid && interpretationFieldForm.get('name')?.touched}"
+          />
+          <div *ngIf="interpretationFieldForm.get('name')?.invalid && interpretationFieldForm.get('name')?.touched" class="invalid-feedback">
+            Name is required.
+          </div>
+        </div>
+
+        <!-- Code -->
+        <div class="form-group mb-3">
+          <label for="interpretationFieldCode" class="fw-semibold mb-1">Code</label>
+          <input
+            id="interpretationFieldCode"
+            type="text"
+            class="form-control"
+            formControlName="code"
+            placeholder="Enter code"
+            required
+            [ngClass]="{'is-invalid': interpretationFieldForm.get('code')?.invalid && interpretationFieldForm.get('code')?.touched}"
+          />
+          <div *ngIf="interpretationFieldForm.get('code')?.invalid && interpretationFieldForm.get('code')?.touched" class="invalid-feedback">
+            Code is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="interpretationFieldForm.invalid">
+            <i class="bi bi-pencil-square me-2"></i>Edit Interpretation Field
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

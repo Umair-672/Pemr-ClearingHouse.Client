@@ -1,0 +1,240 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-person"></i> Edit Patient
+      </h2>
+      <form [formGroup]="patientForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Subscriber -->
+        <div class="form-group mb-3">
+          <label for="subscriberID" class="fw-semibold mb-1">Subscriber</label>
+          <input
+            id="subscriberID"
+            class="form-control"
+            formControlName="subscriberID"
+            required
+            [value]="getSelectedSubscriberName()"
+            [ngClass]="{'is-invalid': patientForm.get('subscriberID')?.invalid && patientForm.get('subscriberID')?.touched}"
+          />
+          <div *ngIf="patientForm.get('subscriberID')?.invalid && patientForm.get('subscriberID')?.touched" class="invalid-feedback">
+            Subscriber is required.
+          </div>
+        </div>
+
+        <!-- First Name -->
+        <div class="form-group mb-3">
+          <label for="patientFirstName" class="fw-semibold mb-1">First Name</label>
+          <input
+            id="patientFirstName"
+            type="text"
+            class="form-control"
+            formControlName="firstName"
+            placeholder="Enter first name"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('firstName')?.invalid && patientForm.get('firstName')?.touched}"
+          />
+          <div *ngIf="patientForm.get('firstName')?.invalid && patientForm.get('firstName')?.touched" class="invalid-feedback">
+            First name is required.
+          </div>
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group mb-3">
+          <label for="patientLastName" class="fw-semibold mb-1">Last Name</label>
+          <input
+            id="patientLastName"
+            type="text"
+            class="form-control"
+            formControlName="lastName"
+            placeholder="Enter last name"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('lastName')?.invalid && patientForm.get('lastName')?.touched}"
+          />
+          <div *ngIf="patientForm.get('lastName')?.invalid && patientForm.get('lastName')?.touched" class="invalid-feedback">
+            Last name is required.
+          </div>
+        </div>
+
+        <!-- Middle Name -->
+        <div class="form-group mb-3">
+          <label for="patientMiddleName" class="fw-semibold mb-1">Middle Name</label>
+          <input
+            id="patientMiddleName"
+            type="text"
+            class="form-control"
+            formControlName="middleName"
+            placeholder="Enter middle name"
+          />
+        </div>
+
+        <!-- Primary Identification -->
+        <div class="form-group mb-3">
+          <label for="patientPrimaryIdentification" class="fw-semibold mb-1">Primary Identification</label>
+          <input
+            id="patientPrimaryIdentification"
+            type="text"
+            class="form-control"
+            formControlName="primaryIdentification"
+            placeholder="Enter primary identification"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('primaryIdentification')?.invalid && patientForm.get('primaryIdentification')?.touched}"
+          />
+          <div *ngIf="patientForm.get('primaryIdentification')?.invalid && patientForm.get('primaryIdentification')?.touched" class="invalid-feedback">
+            Primary identification is required.
+          </div>
+        </div>
+
+        <!-- Address 1 -->
+        <div class="form-group mb-3">
+          <label for="patientAddress1" class="fw-semibold mb-1">Address 1</label>
+          <input
+            id="patientAddress1"
+            type="text"
+            class="form-control"
+            formControlName="address1"
+            placeholder="Enter address 1"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('address1')?.invalid && patientForm.get('address1')?.touched}"
+          />
+          <div *ngIf="patientForm.get('address1')?.invalid && patientForm.get('address1')?.touched" class="invalid-feedback">
+            Address 1 is required.
+          </div>
+        </div>
+
+        <!-- Address 2 -->
+        <div class="form-group mb-3">
+          <label for="patientAddress2" class="fw-semibold mb-1">Address 2</label>
+          <input
+            id="patientAddress2"
+            type="text"
+            class="form-control"
+            formControlName="address2"
+            placeholder="Enter address 2"
+          />
+        </div>
+
+        <!-- City -->
+        <div class="form-group mb-3">
+          <label for="patientCity" class="fw-semibold mb-1">City</label>
+          <input
+            id="patientCity"
+            type="text"
+            class="form-control"
+            formControlName="city"
+            placeholder="Enter city"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('city')?.invalid && patientForm.get('city')?.touched}"
+          />
+          <div *ngIf="patientForm.get('city')?.invalid && patientForm.get('city')?.touched" class="invalid-feedback">
+            City is required.
+          </div>
+        </div>
+
+        <!-- State -->
+        <div class="form-group mb-3">
+          <label for="patientState" class="fw-semibold mb-1">State</label>
+          <input
+            id="patientState"
+            type="text"
+            class="form-control"
+            formControlName="state"
+            placeholder="Enter state"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('state')?.invalid && patientForm.get('state')?.touched}"
+          />
+          <div *ngIf="patientForm.get('state')?.invalid && patientForm.get('state')?.touched" class="invalid-feedback">
+            State is required.
+          </div>
+        </div>
+
+        <!-- Zip Code -->
+        <div class="form-group mb-3">
+          <label for="patientZipCode" class="fw-semibold mb-1">Zip Code</label>
+          <input
+            id="patientZipCode"
+            type="text"
+            class="form-control"
+            formControlName="zipCode"
+            placeholder="Enter zip code"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('zipCode')?.invalid && patientForm.get('zipCode')?.touched}"
+          />
+          <div *ngIf="patientForm.get('zipCode')?.invalid && patientForm.get('zipCode')?.touched" class="invalid-feedback">
+            Zip code is required.
+          </div>
+        </div>
+
+        <!-- Secondary Identification -->
+        <div class="form-group mb-3">
+          <label for="patientSecondaryIdentification" class="fw-semibold mb-1">Secondary Identification</label>
+          <input
+            id="patientSecondaryIdentification"
+            type="text"
+            class="form-control"
+            formControlName="secondaryIdentification"
+            placeholder="Enter secondary identification"
+          />
+        </div>
+
+        <!-- Relationship Code -->
+        <div class="form-group mb-3">
+          <label for="patientRelationshipCode" class="fw-semibold mb-1">Relationship Code</label>
+          <input
+            id="patientRelationshipCode"
+            type="text"
+            class="form-control"
+            formControlName="relationshipCode"
+            placeholder="Enter relationship code"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('relationshipCode')?.invalid && patientForm.get('relationshipCode')?.touched}"
+          />
+          <div *ngIf="patientForm.get('relationshipCode')?.invalid && patientForm.get('relationshipCode')?.touched" class="invalid-feedback">
+            Relationship code is required.
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group mb-3">
+          <label for="patientGender" class="fw-semibold mb-1">Gender</label>
+          <select
+            id="patientGender"
+            class="form-control"
+            formControlName="gender"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('gender')?.invalid && patientForm.get('gender')?.touched}"
+          >
+            <option value="">Select gender...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+          </select>
+          <div *ngIf="patientForm.get('gender')?.invalid && patientForm.get('gender')?.touched" class="invalid-feedback">
+            Gender is required.
+          </div>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group mb-3">
+          <label for="patientDOB" class="fw-semibold mb-1">Date of Birth</label>
+          <input
+            id="patientDOB"
+            type="date"
+            class="form-control"
+            formControlName="dob"
+            required
+            [ngClass]="{'is-invalid': patientForm.get('dob')?.invalid && patientForm.get('dob')?.touched}"
+          />
+          <div *ngIf="patientForm.get('dob')?.invalid && patientForm.get('dob')?.touched" class="invalid-feedback">
+            Date of birth is required.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="patientForm.invalid">
+            <i class="bi bi-pencil-square me-2"></i>Edit Patient
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 

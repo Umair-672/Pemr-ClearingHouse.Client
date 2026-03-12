@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IOrganization } from '../../model/organization.model';
-import { OrganizationService } from '../../services/organization-service';
+import { OrganizationService } from '../../service/organization-service';
 
 @Component({
   selector: 'app-organization-form-list-component',

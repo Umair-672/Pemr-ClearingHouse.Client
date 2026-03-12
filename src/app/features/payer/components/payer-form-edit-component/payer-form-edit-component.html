@@ -1,0 +1,122 @@
+<div class="container py-4">
+  <div class="row justify-content-">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-credit-card"></i> Edit Payer
+      </h2>
+      <form [formGroup]="payerForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <!-- Name -->
+        <div class="form-group mb-3">
+          <label for="payerName" class="fw-semibold mb-1">Name</label>
+          <input
+            id="payerName"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Enter payer name"
+            required
+            [ngClass]="{'is-invalid': payerForm.get('name')?.invalid && payerForm.get('name')?.touched}"
+          />
+          <div *ngIf="payerForm.get('name')?.invalid && payerForm.get('name')?.touched" class="invalid-feedback">
+            Name is required.
+          </div>
+        </div>
+
+        <!-- Identification Code -->
+        <div class="form-group mb-3">
+          <label for="payerCode" class="fw-semibold mb-1">Identification Code</label>
+          <input
+            id="payerCode"
+            type="text"
+            class="form-control"
+            formControlName="identificationCode"
+            placeholder="Enter identification code"
+            required
+            [ngClass]="{'is-invalid': payerForm.get('identificationCode')?.invalid && payerForm.get('identificationCode')?.touched}"
+          />
+          <div *ngIf="payerForm.get('identificationCode')?.invalid && payerForm.get('identificationCode')?.touched" class="invalid-feedback">
+            Identification code is required.
+          </div>
+        </div>
+
+        <!-- Subscriber -->
+        <div class="form-group mb-3">
+          <label for="subscriberID" class="fw-semibold mb-1">Subscriber</label>
+          <input id="subscriberID" type="text" class="form-control"
+                 formControlName="subscriberID" required
+                 placeholder="Enter subscriber ID"
+                 [ngClass]="{'is-invalid': payerForm.get('subscriberID')?.invalid && payerForm.get('subscriberID')?.touched}" />
+          <div *ngIf="payerForm.get('subscriberID')?.invalid && payerForm.get('subscriberID')?.touched" class="invalid-feedback">
+            Subscriber is required.
+          </div>
+        </div>
+
+        <!-- Address 1 -->
+        <div class="form-group mb-3">
+          <label for="payerAddress1" class="fw-semibold mb-1">Address 1</label>
+          <input
+            id="payerAddress1"
+            type="text"
+            class="form-control"
+            formControlName="address1"
+            placeholder="Enter address 1"
+          />
+        </div>
+
+        <!-- Address 2 -->
+        <div class="form-group mb-3">
+          <label for="payerAddress2" class="fw-semibold mb-1">Address 2</label>
+          <input
+            id="payerAddress2"
+            type="text"
+            class="form-control"
+            formControlName="address2"
+            placeholder="Enter address 2"
+          />
+        </div>
+
+        <!-- City -->
+        <div class="form-group mb-3">
+          <label for="payerCity" class="fw-semibold mb-1">City</label>
+          <input
+            id="payerCity"
+            type="text"
+            class="form-control"
+            formControlName="city"
+            placeholder="Enter city"
+          />
+        </div>
+
+        <!-- State -->
+        <div class="form-group mb-3">
+          <label for="payerState" class="fw-semibold mb-1">State</label>
+          <input
+            id="payerState"
+            type="text"
+            class="form-control"
+            formControlName="state"
+            placeholder="Enter state"
+          />
+        </div>
+
+        <!-- Zip Code -->
+        <div class="form-group mb-3">
+          <label for="payerZip" class="fw-semibold mb-1">Zip Code</label>
+          <input
+            id="payerZip"
+            type="text"
+            class="form-control"
+            formControlName="zipCode"
+            placeholder="Enter zip code"
+          />
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="payerForm.invalid">
+            <i class="bi bi-pencil-square me-2"></i>Edit Payer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<h4 class="mb-3"><i class="bi bi-hdd-network me-2"></i>FTP Settings</h4>
+<div class="card shadow-sm mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">FTP Settings</h5>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive tbl-dashhboard">
+      <table class="table table-hover align-middle mb-0" style="table-layout: auto;">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th class="text-nowrap">Gateway</th>
+            <th class="text-nowrap">Submitter ID</th>
+            <th>URL</th>
+            <th class="text-nowrap">User Name</th>
+            <th class="text-nowrap">Password</th>
+            <th class="text-nowrap">Claim Dir</th>
+            <th class="text-nowrap">Claim Status Dir</th>
+            <th class="text-nowrap">Eligibility Dir</th>
+            <th class="text-nowrap">ERA Dir</th>
+            <th class="text-nowrap">Outbound File Type</th>
+            <th class="text-nowrap">Inbound File Type</th>
+            <th class="text-nowrap">Encryption Public Key</th>
+            <th class="text-nowrap">Encryption Private Key</th>
+            <th class="text-nowrap">Is Active</th>
+            <th class="text-nowrap">Is Deleted</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.gateway?.name || item.gatewayID }}</td>
+            <td>{{ item.submitterID }}</td>
+            <td>{{ item.url }}</td>
+            <td>{{ item.userName }}</td>
+            <td>{{ item.password }}</td>
+            <td>{{ item.claimDir }}</td>
+            <td>{{ item.claimStatusDir }}</td>
+            <td>{{ item.eligibilityDir }}</td>
+            <td>{{ item.eraDir }}</td>
+            <td>{{ item.outboundFileType }}</td>
+            <td>{{ item.inboundFileType }}</td>
+            <td>{{ item.encryptionPublicKey }}</td>
+            <td>{{ item.encryptionPrivateKey }}</td>
+            <td>
+              <span class="badge" [ngClass]="{'bg-success': item.isActive, 'bg-secondary': !item.isActive}">
+                {{ item.isActive ? 'Active' : 'Inactive' }}
+              </span>
+            </td>
+            <td>
+              <span class="badge" [ngClass]="{'bg-danger': item.isDeleted, 'bg-success': !item.isDeleted}">
+                {{ item.isDeleted ? 'Deleted' : 'Not Deleted' }}
+              </span>
+            </td>
+            <td class="text-nowrap">
+              <button class="btn btn-icon btn-outline-secondary me-1" title="Edit" [routerLink]="['edit', item.id]">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-icon btn-outline-danger" title="Delete" (click)="openDeleteDialog(item)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="items.length === 0">
+            <td colspan="15" class="text-center py-4 text-muted">
+              <i class="fas fa-inbox fa-2x mb-2"></i>
+              <p class="mb-0">No FTP Settings found</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-delete-dialog
+  *ngIf="showDeleteModal"
+  [entityName]="selectedItem?.url || 'FTP Setting'"
+  title="Delete FTP Setting"
+  (closed)="onDeleteDialogClosed($event)">
+</app-confirm-delete-dialog> 

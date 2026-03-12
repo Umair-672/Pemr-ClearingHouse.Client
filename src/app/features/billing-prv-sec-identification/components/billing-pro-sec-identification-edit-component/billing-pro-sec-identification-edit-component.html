@@ -1,0 +1,83 @@
+<div class="container py-4">
+  <div class="row justify-content">
+    <div class="col-md-7 col-lg-6">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-shield-lock"></i> Edit Billing Pro Sec Identification
+      </h2>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+      >
+        <div class="form-group mb-3">
+          <label for="billingProviderID" class="fw-semibold mb-1"
+            >Billing Provider</label
+          >
+          <input
+            id="billingProviderID"
+            class="form-control"
+            formControlName="billingProviderID"
+            required
+            [ngClass]="{
+              'is-invalid':
+                form.get('billingProviderID')?.invalid &&
+                form.get('billingProviderID')?.touched
+            }"
+            placeholder="Select billing provider..."
+          />
+          <div
+            *ngIf="form.get('billingProviderID')?.invalid && form.get('billingProviderID')?.touched"
+            class="invalid-feedback"
+          >
+            Billing Provider is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="qualifier" class="fw-semibold mb-1">Qualifier</label>
+          <input
+            id="qualifier"
+            type="text"
+            class="form-control"
+            formControlName="qualifier"
+            required
+            [ngClass]="{'is-invalid': form.get('qualifier')?.invalid && form.get('qualifier')?.touched}"
+            placeholder="Enter qualifier"
+          />
+          <div
+            *ngIf="form.get('qualifier')?.invalid && form.get('qualifier')?.touched"
+            class="invalid-feedback"
+          >
+            Qualifier is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="value" class="fw-semibold mb-1">Value</label>
+          <input
+            id="value"
+            type="text"
+            class="form-control"
+            formControlName="value"
+            required
+            [ngClass]="{'is-invalid': form.get('value')?.invalid && form.get('value')?.touched}"
+            placeholder="Enter value"
+          />
+          <div
+            *ngIf="form.get('value')?.invalid && form.get('value')?.touched"
+            class="invalid-feedback"
+          >
+            Value is required.
+          </div>
+        </div>
+        <div class="d-grid">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            <i class="bi bi-check-circle me-2"></i>Update Billing Pro Sec Identification
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

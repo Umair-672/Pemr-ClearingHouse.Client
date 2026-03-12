@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrganizationService } from '../../services/organization-service';
+import { OrganizationService } from '../../service/organization-service';
 import { IOrganization } from '../../model/organization.model';
 
 @Component({

@@ -1,0 +1,64 @@
+<div class="container py-4">
+  <div class="row justify-content">
+    <div class="col-md-8 col-lg-7">
+      <h2 class="text mb-4 text-primary fw-bold">
+        <i class="bi bi-pencil-square"></i> Edit Outbound Claim
+      </h2>
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        *ngIf="!loading"
+      >
+        <div class="form-group mb-3">
+          <label for="outboundTransactionID" class="fw-semibold mb-1">Outbound Transaction</label>
+          <app-searchable-dropdown
+            [options]="outboundTransactions"
+            [config]="outboundTransactionDropdownConfig"
+            [disabled]="!outboundTransactions || outboundTransactions.length === 0"
+            [required]="true"
+            (selectionChange)="onOutboundTransactionSelectionChange($event)"
+            [ngClass]="{'is-invalid': form.get('outboundTransactionID')?.invalid && form.get('outboundTransactionID')?.touched}"
+          ></app-searchable-dropdown>
+          <div
+            *ngIf="form.get('outboundTransactionID')?.invalid && form.get('outboundTransactionID')?.touched"
+            class="invalid-feedback"
+          >
+            Outbound Transaction is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="claimID" class="fw-semibold mb-1">Claim</label>
+          <app-searchable-dropdown
+            [options]="claims"
+            [config]="claimDropdownConfig"
+            [disabled]="!claims || claims.length === 0"
+            [required]="true"
+            (selectionChange)="onClaimSelectionChange($event)"
+            [ngClass]="{'is-invalid': form.get('claimID')?.invalid && form.get('claimID')?.touched}"
+          ></app-searchable-dropdown>
+          <div
+            *ngIf="form.get('claimID')?.invalid && form.get('claimID')?.touched"
+            class="invalid-feedback"
+          >
+            Claim is required.
+          </div>
+        </div>
+        <div class="d-grid">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            <i class="bi bi-check-circle me-2"></i>Update Outbound Claim
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 
